@@ -8,10 +8,11 @@
 
 import UIKit
 
+public
 extension UIStackView {
 
-    @discardableResult
-    override func addInRootView(_ rootView: UIView) -> Self {
+    @discardableResult override
+    func addInRootView(_ rootView: UIView) -> Self {
         super.addInRootView(rootView)
         return self
     }

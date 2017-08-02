@@ -8,16 +8,10 @@
 
 import UIKit
 
+public
 extension UIView {
 
-    func addSubviews(_ subviews: UIView...) {
-        addSubviews(subviews)
-    }
-
-    func addSubviews(_ subviews: [UIView?]) {
-        subviews.flatMap { $0 }.forEach { addSubview($0) }
-    }
-
+    @discardableResult
     func set(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
         if let width = width {
             widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -28,12 +22,24 @@ extension UIView {
         return self
     }
 
+}
+
+public
+extension UIView {
+
     @discardableResult
     func addInRootView(_ rootView: UIView) -> Self {
         translatesAutoresizingMaskIntoConstraints = false
         rootView.addSubview(self)
         return self
     }
+
+}
+
+// MARK: - Size
+
+public
+extension UIView {
 
     @discardableResult
     func setHeightAnchor(rootView: UIView) -> Self {
@@ -53,6 +59,13 @@ extension UIView {
             .setHeightAnchor(rootView: rootView)
             .setWidthtAnchor(rootView: rootView)
     }
+
+}
+
+// MARK: - Anchor
+
+public
+extension UIView {
 
     @discardableResult
     func setTopAnchor(anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0) -> Self {
@@ -111,32 +124,36 @@ extension UIView {
             .setRightAnchor(rootView: rootView)
     }
 
+}
+
+// MARK: - Position
+
+public
+extension UIView {
 
     @discardableResult
-    func setCenterXAnchor(rootView: UIView) -> Self {
-        centerXAnchor.constraint(equalTo: rootView.centerXAnchor).isActive = true
+    func setCenterX(fromView: UIView? = nil) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         return self
     }
 
     @discardableResult
-    func setCenterYAnchor(rootView: UIView) -> Self {
-        centerYAnchor.constraint(equalTo: rootView.centerYAnchor).isActive = true
+    func setCenterY(fromView: UIView? = nil) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         return self
     }
 
     @discardableResult
-    func setCenterAnchor(rootView: UIView) -> Self {
+    func setCenter(fromView: UIView? = nil) -> Self {
         return self
-            .setCenterXAnchor(rootView: rootView)
-            .setCenterYAnchor(rootView: rootView)
-    }
-
-    @discardableResult
-    func setCenterAnchorFromSuperview() -> Self {
-        guard let superview = superview else { return self }
-        return self
-            .setCenterXAnchor(rootView: superview)
-            .setCenterYAnchor(rootView: superview)
+            .setCenterX(fromView: fromView)
+            .setCenterY(fromView: fromView)
     }
 
 }

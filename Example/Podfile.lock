@@ -1,0 +1,19 @@
+PODS:
+  - DStack (0.0.1)
+  - SwiftLint (0.20.1)
+
+DEPENDENCIES:
+  - DStack (from `..`)
+  - SwiftLint
+
+EXTERNAL SOURCES:
+  DStack:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  DStack: f702115a361012f0bbd2dcdd100cc4c085aa80b5
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
+
+PODFILE CHECKSUM: 035da180ba8bd39f10dacacc1f3707dbd527eb9d
+
+COCOAPODS: 1.2.1
