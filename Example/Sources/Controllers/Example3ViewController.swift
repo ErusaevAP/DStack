@@ -1,5 +1,5 @@
 //
-//  Example1ViewController.swift
+//  Example3ViewController.swift
 //  DStackExample
 //
 //  Created by Andrei Erusaev on 8/2/17.
@@ -9,7 +9,7 @@
 import UIKit
 import DStack
 
-class Example1ViewController: UIViewController {
+class Example3ViewController: UIViewController {
 
     // MARK: Properties
 
@@ -45,36 +45,29 @@ class Example1ViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        let stackView = UIStackView()
-            .addInRootView(view)
-            .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
-            .setRightAnchor(anchor: view.rightAnchor)
-            .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            .setLeftAnchor(anchor: view.leftAnchor)
+        let side: CGFloat = 100
 
-        let side: CGFloat = 70
-
-        label1.addInRootView(stackView)
+        label1.addInRootView(view)
             .set(width: side, height: side)
             .setTopAlignment()
-            .setCenterX()
+            .setLeftAlignment()
 
-        label2.addInRootView(stackView)
+        label2.addInRootView(view)
             .set(width: side, height: side)
+            .setTopAlignment()
             .setRightAlignment()
-            .setCenterY()
 
-        label3.addInRootView(stackView)
+        label3.addInRootView(view)
             .set(width: side, height: side)
             .setBottomAlignment()
-            .setCenterX()
+            .setRightAlignment()
 
-        label4.addInRootView(stackView)
+        label4.addInRootView(view)
             .set(width: side, height: side)
+            .setBottomAlignment()
             .setLeftAlignment()
-            .setCenterY()
 
-        label5.addInRootView(stackView)
+        label5.addInRootView(view)
             .set(width: side, height: side)
             .setCenter()
     }
@@ -83,7 +76,7 @@ class Example1ViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Example 3"
+        title = "Example 1"
     }
 
     required init?(coder aDecoder: NSCoder) {

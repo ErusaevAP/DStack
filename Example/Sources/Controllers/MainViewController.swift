@@ -20,7 +20,8 @@ class MainViewController: UITabBarController {
         setViewControllers(
             [
                 Example1ViewController().navigationController,
-                Example2ViewController().navigationController
+                Example2ViewController().navigationController,
+                Example3ViewController().navigationController
             ],
             animated: false
         )

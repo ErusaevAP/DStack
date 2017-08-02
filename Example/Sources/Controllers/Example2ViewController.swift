@@ -1,5 +1,5 @@
 //
-//  Example1ViewController.swift
+//  Example2ViewController.swift
 //  DStackExample
 //
 //  Created by Andrei Erusaev on 8/2/17.
@@ -45,28 +45,30 @@ class Example2ViewController: UIViewController {
 
         view.backgroundColor = .white
 
+        let side: CGFloat = 100
+
         label1.addInRootView(view)
-            .set(width: 50, height: 50)
-            .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
+            .set(width: side, height: side)
+            .setTopAlignment()
             .setCenterX()
 
         label2.addInRootView(view)
-            .set(width: 50, height: 50)
-            .setRightAnchor(rootView: view)
+            .set(width: side, height: side)
+            .setRightAlignment()
             .setCenterY()
 
         label3.addInRootView(view)
-            .set(width: 50, height: 50)
-            .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
+            .set(width: side, height: side)
+            .setBottomAlignment()
             .setCenterX()
 
         label4.addInRootView(view)
-            .set(width: 50, height: 50)
-            .setLeftAnchor(rootView: view)
+            .set(width: side, height: side)
+            .setLeftAlignment()
             .setCenterY()
 
         label5.addInRootView(view)
-            .set(width: 50, height: 50)
+            .set(width: side, height: side)
             .setCenter()
     }
 

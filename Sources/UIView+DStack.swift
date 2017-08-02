@@ -8,33 +8,7 @@
 
 import UIKit
 
-public
-extension UIView {
 
-    @discardableResult
-    func set(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
-        if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
-        }
-        if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
-        return self
-    }
-
-}
-
-public
-extension UIView {
-
-    @discardableResult
-    func addInRootView(_ rootView: UIView) -> Self {
-        translatesAutoresizingMaskIntoConstraints = false
-        rootView.addSubview(self)
-        return self
-    }
-
-}
 
 // MARK: - Size
 
@@ -42,22 +16,45 @@ public
 extension UIView {
 
     @discardableResult
-    func setHeightAnchor(rootView: UIView) -> Self {
-        heightAnchor.constraint(equalTo: rootView.heightAnchor, multiplier: 1).isActive = true
+    func setHeight(fromView: UIView? = nil) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1).isActive = true
         return self
     }
 
     @discardableResult
-    func setWidthtAnchor(rootView: UIView) -> Self {
-        widthAnchor.constraint(equalTo: rootView.widthAnchor, multiplier: 1).isActive = true
+    func setWidtht(fromView: UIView? = nil) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         return self
     }
 
     @discardableResult
-    func setSizeAnchor(rootView: UIView) -> Self {
+    func setSize(fromView: UIView) -> Self {
+        let fromView = fromView ?? superview
         return self
-            .setHeightAnchor(rootView: rootView)
-            .setWidthtAnchor(rootView: rootView)
+            .setHeight(fromView: fromView)
+            .setWidtht(fromView: fromView)
+    }
+
+    @discardableResult
+    func setSize(size: CGSize) -> Self {
+        return setSize(width: size.width, height: size.height)
+    }
+
+    @discardableResult
+    func setSize(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
+        if let width = width {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        if let height = height {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        return self
     }
 
 }
@@ -74,26 +71,8 @@ extension UIView {
     }
 
     @discardableResult
-    func setTopAnchor(rootView: UIView, constant: CGFloat = 0) -> Self {
-        topAnchor.constraint(equalTo: rootView.topAnchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult
-    func setBottomAnchor(rootView: UIView, constant: CGFloat = 0) -> Self {
-        bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult
     func setBottomAnchor(anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0) -> Self {
         bottomAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult
-    func setLeftAnchor(rootView: UIView, constant: CGFloat = 0) -> Self {
-        leftAnchor.constraint(equalTo: rootView.leftAnchor, constant: constant).isActive = true
         return self
     }
 
@@ -104,29 +83,70 @@ extension UIView {
     }
 
     @discardableResult
-    func setRightAnchor(rootView: UIView, constant: CGFloat = 0) -> Self {
-        rightAnchor.constraint(equalTo: rootView.rightAnchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult
     func setRightAnchor(anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0) -> Self {
         rightAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
         return self
     }
 
+}
+
+// MARK: - Fill
+
+public
+extension UIView {
+
     @discardableResult
-    func fill(rootView: UIView) -> Self {
+    func fill(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
+        let fromView = fromView ?? superview
         return self
-            .setTopAnchor(rootView: rootView)
-            .setBottomAnchor(rootView: rootView)
-            .setLeftAnchor(rootView: rootView)
-            .setRightAnchor(rootView: rootView)
+            .setTopAlignment(fromView: fromView, marge: marge)
+            .setBottomAlignment(fromView: fromView, marge: marge)
+            .setLeftAlignment(fromView: fromView, marge: marge)
+            .setRightAlignment(fromView: fromView, marge: marge)
     }
 
 }
 
-// MARK: - Position
+// MARK: - Alignment
+
+public
+extension UIView {
+
+    @discardableResult
+    func setTopAlignment(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        return setTopAnchor(anchor: view.topAnchor, constant: marge)
+    }
+
+    @discardableResult
+    func setBottomAlignment(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        return setBottomAnchor(anchor: view.bottomAnchor, constant: marge)
+    }
+
+    @discardableResult
+    func setLeftAlignment(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        return setLeftAnchor(anchor: view.leftAnchor, constant: marge)
+    }
+
+    @discardableResult
+    func setRightAlignment(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
+        let fromView = fromView ?? superview
+        guard let view = fromView else { return self }
+
+        return setRightAnchor(anchor: view.rightAnchor, constant: marge)
+    }
+
+}
+
+// MARK: - Center
 
 public
 extension UIView {
@@ -151,6 +171,7 @@ extension UIView {
 
     @discardableResult
     func setCenter(fromView: UIView? = nil) -> Self {
+        let fromView = fromView ?? superview
         return self
             .setCenterX(fromView: fromView)
             .setCenterY(fromView: fromView)

@@ -19,4 +19,11 @@ extension UIView {
         subviews.flatMap { $0 }.forEach { addSubview($0) }
     }
 
+    @discardableResult
+    func addInRootView(_ rootView: UIView) -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        rootView.addSubview(self)
+        return self
+    }
+
 }
