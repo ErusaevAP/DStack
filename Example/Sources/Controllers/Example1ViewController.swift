@@ -84,7 +84,7 @@ class Example1ViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Example 3"
+        title = "Example 1"
     }
 
     required init?(coder aDecoder: NSCoder) {
