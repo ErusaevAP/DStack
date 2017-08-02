@@ -63,26 +63,26 @@ public
 extension UIView {
 
     @discardableResult
-    func setTopAnchor(anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0) -> Self {
-        topAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+    func setTopAnchor(anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        topAnchor.constraint(equalTo: anchor, constant: marge).isActive = true
         return self
     }
 
     @discardableResult
-    func setBottomAnchor(anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0) -> Self {
-        bottomAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+    func setBottomAnchor(anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        bottomAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
         return self
     }
 
     @discardableResult
-    func setLeftAnchor(anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0) -> Self {
-        leftAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+    func setLeftAnchor(anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+        leftAnchor.constraint(equalTo: anchor, constant: marge).isActive = true
         return self
     }
 
     @discardableResult
-    func setRightAnchor(anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0) -> Self {
-        rightAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+    func setRightAnchor(anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+        rightAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
         return self
     }
 
@@ -115,7 +115,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setTopAnchor(anchor: view.topAnchor, constant: marge)
+        return setTopAnchor(anchor: view.topAnchor, marge: marge)
     }
 
     @discardableResult
@@ -123,7 +123,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setBottomAnchor(anchor: view.bottomAnchor, constant: marge)
+        return setBottomAnchor(anchor: view.bottomAnchor, marge: marge)
     }
 
     @discardableResult
@@ -131,7 +131,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setLeftAnchor(anchor: view.leftAnchor, constant: marge)
+        return setLeftAnchor(anchor: view.leftAnchor, marge: marge)
     }
 
     @discardableResult
@@ -139,7 +139,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setRightAnchor(anchor: view.rightAnchor, constant: marge)
+        return setRightAnchor(anchor: view.rightAnchor, marge: marge)
     }
 
 }

@@ -48,10 +48,10 @@ class Example1ViewController: UIViewController {
 
         let stackView = UIStackView()
             .addInRootView(view)
-            .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
-            .setRightAnchor(anchor: view.rightAnchor)
-            .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            .setLeftAnchor(anchor: view.leftAnchor)
+            .setTopAnchor(anchor: topLayoutGuide.bottomAnchor, marge: 10)
+            .setRightAnchor(anchor: view.rightAnchor, marge: 10)
+            .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor, marge: 10)
+            .setLeftAnchor(anchor: view.leftAnchor, marge: 10)
 
         let side: CGFloat = 70
 
