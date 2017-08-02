@@ -32,7 +32,7 @@ extension UIView {
     }
 
     @discardableResult
-    func setSize(fromView: UIView) -> Self {
+    func setSize(fromView: UIView? = nil) -> Self {
         let fromView = fromView ?? superview
         return self
             .setHeight(fromView: fromView)
