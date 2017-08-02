@@ -40,7 +40,8 @@ class Example3ViewController: UIViewController {
 
     // MARK: Life Cycle
 
-    override func viewDidLoad() {
+    override
+    func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
@@ -48,27 +49,27 @@ class Example3ViewController: UIViewController {
         let side: CGFloat = 100
 
         label1.addInRootView(view)
-            .set(width: side, height: side)
+            .setSize(width: side, height: side)
             .setTopAlignment()
             .setLeftAlignment()
 
         label2.addInRootView(view)
-            .set(width: side, height: side)
+            .setSize(width: side, height: side)
             .setTopAlignment()
             .setRightAlignment()
 
         label3.addInRootView(view)
-            .set(width: side, height: side)
+            .setSize(width: side, height: side)
             .setBottomAlignment()
             .setRightAlignment()
 
         label4.addInRootView(view)
-            .set(width: side, height: side)
+            .setSize(width: side, height: side)
             .setBottomAlignment()
             .setLeftAlignment()
 
         label5.addInRootView(view)
-            .set(width: side, height: side)
+            .setSize(width: side, height: side)
             .setCenter()
     }
 
