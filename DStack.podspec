@@ -87,11 +87,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  # s.source_files  = "Sources"
-  # s.exclude_files = "Sources/Exclude"
-
-  s.source       = { :git => "https://github.com/erusaevap/DStack.git", :tag => s.version }
-  s.source_files  = 'Classes/*.{h,m,swift}'
+  s.source_files  = 'Sources/*.{h,m,swift}'
 
   # s.public_header_files = "Sources/**/*.h"
 
