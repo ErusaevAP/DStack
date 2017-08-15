@@ -11,6 +11,7 @@ import UIKit
 open
 class DViewController<View: UIView>: UIViewController {
 
+    public
     let contentView = View()
 
     open override
