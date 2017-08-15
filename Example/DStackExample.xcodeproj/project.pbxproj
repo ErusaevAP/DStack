@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */; };
 		3D869B091F31E3AB00AB5F97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */; };
 		3D869B101F31E3AB00AB5F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D869B0F1F31E3AB00AB5F97 /* Assets.xcassets */; };
 		3D869B131F31E3AB00AB5F97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D869B111F31E3AB00AB5F97 /* LaunchScreen.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3D869B051F31E3AB00AB5F97 /* DStackExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DStackExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D869B0F1F31E3AB00AB5F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				3D869B0F1F31E3AB00AB5F97 /* Assets.xcassets */,
 				3D869B111F31E3AB00AB5F97 /* LaunchScreen.storyboard */,
 				3D869B141F31E3AB00AB5F97 /* Info.plist */,
+				3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				3D869B091F31E3AB00AB5F97 /* AppDelegate.swift in Sources */,
 				3D869B231F31F9D300AB5F97 /* Example3ViewController.swift in Sources */,
+				3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */,
 				3D869B271F32005A00AB5F97 /* Example1ViewController.swift in Sources */,
 				3D869B241F31F9D300AB5F97 /* Example2ViewController.swift in Sources */,
 				3D869B251F31F9D300AB5F97 /* MainViewController.swift in Sources */,
