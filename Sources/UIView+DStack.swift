@@ -94,6 +94,15 @@ public
 extension UIView {
 
     @discardableResult
+    func fill(viewController: UIViewController, marge: CGFloat = 0) -> Self {
+        return self
+            .setTopAnchor(anchor: viewController.topLayoutGuide.bottomAnchor, marge: marge)
+            .setRightAnchor(anchor: viewController.view.rightAnchor, marge: marge)
+            .setBottomAnchor(anchor: viewController.bottomLayoutGuide.topAnchor, marge: marge)
+            .setLeftAnchor(anchor: viewController.view.leftAnchor, marge: marge)
+    }
+
+    @discardableResult
     func fill(fromView: UIView? = nil, marge: CGFloat = 0) -> Self {
         let fromView = fromView ?? superview
         return self
