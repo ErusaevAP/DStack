@@ -1,5 +1,5 @@
 //
-//  DViewController.swift
+//  TamplateViewController.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 open
-class DViewController<View: UIView>: UIViewController {
+class TamplateViewController<View: UIView>: UIViewController {
 
     public
     let contentView = View()
