@@ -19,7 +19,7 @@ class TamplateViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
 
         contentView
-            .addInRootView(view)
+            .add(inRootView: view)
             .fill()
     }
 

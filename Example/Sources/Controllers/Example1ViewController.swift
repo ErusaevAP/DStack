@@ -47,7 +47,7 @@ class Example1ViewController: UIViewController {
         view.backgroundColor = .white
 
         let stackView = UIStackView()
-            .addInRootView(view)
+            .add(inRootView: view)
             .setTopAnchor(anchor: topLayoutGuide.bottomAnchor, marge: 10)
             .setRightAnchor(anchor: view.rightAnchor, marge: 10)
             .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor, marge: 10)
@@ -55,27 +55,27 @@ class Example1ViewController: UIViewController {
 
         let side: CGFloat = 70
 
-        label1.addInRootView(stackView)
+        label1.add(inRootView: stackView)
             .setSize(width: side, height: side)
             .setTopAlignment()
             .setCenterX()
 
-        label2.addInRootView(stackView)
+        label2.add(inRootView: stackView)
             .setSize(width: side, height: side)
             .setRightAlignment()
             .setCenterY()
 
-        label3.addInRootView(stackView)
+        label3.add(inRootView: stackView)
             .setSize(width: side, height: side)
             .setBottomAlignment()
             .setCenterX()
 
-        label4.addInRootView(stackView)
+        label4.add(inRootView: stackView)
             .setSize(width: side, height: side)
             .setLeftAlignment()
             .setCenterY()
 
-        label5.addInRootView(stackView)
+        label5.add(inRootView: stackView)
             .setSize(width: side, height: side)
             .setCenter()
     }

@@ -11,16 +11,16 @@ import UIKit
 public
 extension UIView {
 
-    func addSubviews(_ subviews: UIView...) {
-        addSubviews(subviews)
+    func add(subviews: UIView...) {
+        add(subviews: subviews)
     }
 
-    func addSubviews(_ subviews: [UIView?]) {
-        subviews.flatMap { $0 }.forEach { addSubview($0) }
+    func add(subviews: [UIView?]) {
+        subviews.flatMap { $0 }.forEach { add(subviews: $0) }
     }
 
     @discardableResult
-    func addInRootView(_ rootView: UIView) -> Self {
+    func add(inRootView rootView: UIView) -> Self {
         translatesAutoresizingMaskIntoConstraints = false
         rootView.addSubview(self)
         return self

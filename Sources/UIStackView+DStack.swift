@@ -12,19 +12,19 @@ public
 extension UIStackView {
 
     @discardableResult override
-    func addInRootView(_ rootView: UIView) -> Self {
-        super.addInRootView(rootView)
+    func add(inRootView rootView: UIView) -> Self {
+        super.add(inRootView: rootView)
         return self
     }
 
     @discardableResult
-    func addArrangedSubviews(_ subviews: UIView...) -> Self {
-        addArrangedSubviews(subviews)
+    func add(arrangedSubviews subviews: UIView...) -> Self {
+        add(arrangedSubviews: subviews)
         return self
     }
 
     @discardableResult
-    func addArrangedSubviews(_ subviews: [UIView?]) -> Self {
+    func add(arrangedSubviews subviews: [UIView?]) -> Self {
         subviews.flatMap { $0 }.forEach { addArrangedSubview($0) }
         return self
     }

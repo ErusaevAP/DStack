@@ -48,27 +48,27 @@ class Example2ViewController: UIViewController {
 
         let side: CGFloat = 100
 
-        label1.addInRootView(view)
+        label1.add(inRootView: view)
             .setSize(width: side, height: side)
             .setTopAlignment()
             .setCenterX()
 
-        label2.addInRootView(view)
+        label2.add(inRootView: view)
             .setSize(width: side, height: side)
             .setRightAlignment()
             .setCenterY()
 
-        label3.addInRootView(view)
+        label3.add(inRootView: view)
             .setSize(width: side, height: side)
             .setBottomAlignment()
             .setCenterX()
 
-        label4.addInRootView(view)
+        label4.add(inRootView: view)
             .setSize(width: side, height: side)
             .setLeftAlignment()
             .setCenterY()
 
-        label5.addInRootView(view)
+        label5.add(inRootView: view)
             .setSize(width: side, height: side)
             .setCenter()
     }
