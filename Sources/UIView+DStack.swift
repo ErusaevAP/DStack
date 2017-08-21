@@ -23,7 +23,7 @@ extension UIView {
     }
 
     @discardableResult
-    func setWidtht(fromView: UIView? = nil) -> Self {
+    func setWidth(fromView: UIView? = nil) -> Self {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
@@ -36,7 +36,7 @@ extension UIView {
         let fromView = fromView ?? superview
         return self
             .setHeight(fromView: fromView)
-            .setWidtht(fromView: fromView)
+            .setWidth(fromView: fromView)
     }
 
     @discardableResult
@@ -83,6 +83,18 @@ extension UIView {
     @discardableResult
     func setRightAnchor(anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
         rightAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setHeightAnchor(anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+        heightAnchor.constraint(equalTo: anchor, multiplier: 1).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setWidthAnchor(anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+        widthAnchor.constraint(equalTo: anchor, multiplier: 1).isActive = true
         return self
     }
 
