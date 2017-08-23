@@ -9,7 +9,7 @@
 import DStack
 import UIKit
 
-class TabsViewController: DStack.TabsViewController<HeaderView> {
+class TabsViewController: DStack.TabsViewController<HeaderView, TabsBarView> {
 
     // MARK: Initialization
 
@@ -25,7 +25,8 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
         title = "Tabs"
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required
+    init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

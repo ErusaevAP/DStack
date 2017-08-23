@@ -11,11 +11,12 @@ import RxCocoa
 import UIKit
 
 open
-class TabsViewController<HeaderView: UIView>:
+class TabsViewController<HeaderView: UIView, BarView: UIView>:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout {
+    UICollectionViewDelegateFlowLayout
+    where BarView: TabsBar {
 
     // MARK: Properties
 
@@ -24,14 +25,21 @@ class TabsViewController<HeaderView: UIView>:
 
     private
     var topInset: CGFloat {
-        return bar.frame.height
+        return tabsBarView.frame.height
+    }
+
+    var selectedTab: Int = 0 {
+        didSet {
+            let indexPath = IndexPath(item: selectedTab, section: 0)
+            containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        }
     }
 
     public
     let headerView: HeaderView?
 
     public
-    let bar = BarView()
+    let tabsBarView: BarView
 
     private
     let flowLayout: UICollectionViewFlowLayout = {
@@ -57,7 +65,7 @@ class TabsViewController<HeaderView: UIView>:
     var viewControlles: [UIViewController] {
         didSet {
             if isViewLoaded {
-                bar.model = viewControlles.flatMap { $0.title }.flatMap { $0 }
+                tabsBarView.titles = viewControlles.flatMap { $0.title }.flatMap { $0 }
                 containerView.reloadData()
             }
         }
@@ -69,8 +77,14 @@ class TabsViewController<HeaderView: UIView>:
     init(headerView: HeaderView? = nil, viewControlles: [UIViewController]) {
         self.headerView = headerView
         self.viewControlles = viewControlles
-        self.bar.model = viewControlles.flatMap { $0.title }.flatMap { $0 }
+        self.tabsBarView = BarView()
+
         super.init(nibName: nil, bundle: nil)
+
+        tabsBarView.tappedOnTab = { [weak self] in
+            self?.selectedTab = $0
+        }
+        tabsBarView.titles = viewControlles.flatMap { $0.title }.flatMap { $0 }
     }
 
     required public
@@ -91,7 +105,9 @@ class TabsViewController<HeaderView: UIView>:
     open override
     func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+
         flowLayout.invalidateLayout()
+        tabsBarView.layoutSubviews()
     }
 
     open override
@@ -101,6 +117,18 @@ class TabsViewController<HeaderView: UIView>:
     }
 
     // MARK: UICollectionViewDataSource
+
+    public
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            tabsBarView.selectedTab = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        }
+    }
+
+    public
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        tabsBarView.selectedTab = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+    }
 
     public
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -213,7 +241,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            bar
+            tabsBarView
                 .add(inRootView: view)
                 .setSize(height: 44)
                 .setTopAnchor(anchor: headerView.bottomAnchor)
@@ -226,7 +254,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            bar
+            tabsBarView
                 .add(inRootView: view)
                 .setSize(height: 44)
                 .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)

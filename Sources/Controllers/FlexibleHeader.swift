@@ -23,15 +23,6 @@ class FlexibleHeader: UIView {
         return 0
     }
 
-    private
-    var heightConstraint: NSLayoutConstraint?
-
-    private
-    var beginScrollOffset: CGPoint?
-
-    private
-    var beginHeightHeader: CGFloat = 0
-
     var scrollOffset: CGPoint = .zero {
         didSet {
             guard let beginScrollOffset = beginScrollOffset else { return }
@@ -46,6 +37,17 @@ class FlexibleHeader: UIView {
             }
         }
     }
+
+    private
+    var heightConstraint: NSLayoutConstraint?
+
+    private
+    var beginScrollOffset: CGPoint?
+
+    private
+    var beginHeightHeader: CGFloat = 0
+
+    // MARK: Methods
 
     func willBeginDragging(scrollOffset: CGPoint) {
         beginScrollOffset = scrollOffset
