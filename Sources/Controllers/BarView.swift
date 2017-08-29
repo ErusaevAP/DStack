@@ -17,7 +17,7 @@ protocol TabsBar: class {
 
     var tappedOnTab: ((Int) -> Void)? { get set }
 
-    var selectedTab: Int { get set }
+    var selectedTabIndex: Int { get set }
 
     var titles: [String] { get set }
 
@@ -34,9 +34,9 @@ class TabsBarView: UIView, TabsBar {
     var tappedOnTab: ((Int) -> Void)?
 
     open
-    var selectedTab: Int = 0 {
+    var selectedTabIndex: Int = 0 {
         didSet {
-            selectedButton = buttons[selectedTab]
+            selectedButton = buttons[selectedTabIndex]
         }
     }
 
@@ -52,14 +52,36 @@ class TabsBarView: UIView, TabsBar {
                     self?.tappedOnTab?(obj.offset)
                     self?.selectedButton = bt
                 }.disposed(by: disposeBag)
-                bt.setTitleColor(.black, for: .normal)
-                bt.setTitleColor(.red, for: .selected)
+                bt.setTitleColor(buttonTitleColor, for: .normal)
+                bt.setTitleColor(selectedButtonTitleColor, for: .selected)
+                bt.titleLabel?.font = titleFont
                 return bt
             }
             stackView.add(arrangedSubviews: buttons)
-            selectedTab = min(selectedTab, titles.count - 1)
+            selectedTabIndex = min(selectedTabIndex, titles.count - 1)
         }
     }
+
+    private
+    let titleFont: UIFont?
+
+    private
+    let buttonTitleColor: UIColor
+
+    private
+    let selectedButtonTitleColor: UIColor
+
+    private
+    let separatorLineHeight: CGFloat
+
+    private
+    let separatorLineColor: UIColor
+
+    private
+    let selectorLineHeight: CGFloat
+
+    private
+    let selectorLineColor: UIColor
 
     private
     var disposeBag = DisposeBag()
@@ -80,16 +102,16 @@ class TabsBarView: UIView, TabsBar {
     var stackView = UIStackView()
 
     private
-    var indicatorView: UIView = {
+    var selectorView: UIView = {
         let v = UIView()
         v.backgroundColor = .red
         return v
     }()
 
-    private
+    private lazy
     var separatorView: UIView = {
         let v = UIView()
-        v.backgroundColor = .lightGray
+        v.backgroundColor = self.separatorLineColor
         return v
     }()
 
@@ -104,33 +126,50 @@ class TabsBarView: UIView, TabsBar {
     private
     var buttons: [UIButton] = []
 
+    private
+    var selectorViewWidthConstraint: NSLayoutConstraint?
+
+    private
+    var selectorViewLeftAlignment: NSLayoutConstraint?
+
     // MARK: Initialization
 
-    private
-    var indicatorViewWidthConstraint: NSLayoutConstraint?
-
-    private
-    var indicatorViewLeftAlignment: NSLayoutConstraint?
-
-    init() {
+    public
+    init(
+        titleFont: UIFont? = nil,
+        buttonTitleColor: UIColor = .black,
+        selectedButtonTitleColor: UIColor = .red,
+        separatorLineHeight: CGFloat = 1,
+        separatorLineColor: UIColor = .gray,
+        selectorLineHeight: CGFloat = 1,
+        selectorLineColor: UIColor = .red
+    ) {
+        self.titleFont = titleFont
+        self.buttonTitleColor = buttonTitleColor
+        self.selectedButtonTitleColor = selectedButtonTitleColor
+        self.separatorLineHeight = separatorLineHeight
+        self.separatorLineColor = separatorLineColor
+        self.selectorLineHeight = selectorLineHeight
+        self.selectorLineColor = selectorLineColor
         super.init(frame: .zero)
 
         scrollView
             .add(inRootView: self)
             .fill()
 
-        indicatorView
+        selectorView
             .add(inRootView: scrollView)
-            .setSize(height: 2)
+            .setSize(height: selectorLineHeight)
             .setBottomAlignment()
 
-        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
-        indicatorViewLeftAlignment = indicatorView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0)
-        indicatorViewWidthConstraint?.isActive = true
-        indicatorViewLeftAlignment?.isActive = true
+        selectorViewWidthConstraint = selectorView.widthAnchor.constraint(equalToConstant: 0)
+        selectorViewLeftAlignment = selectorView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0)
+        selectorViewWidthConstraint?.isActive = true
+        selectorViewLeftAlignment?.isActive = true
 
         stackView = UIStackView()
             .set(axis: .horizontal, spacing: 10)
+            .set(alignment: .fill, distribution: .fillProportionally)
             .add(inRootView: scrollView)
             .fill()
             .setHeight()
@@ -138,8 +177,13 @@ class TabsBarView: UIView, TabsBar {
         separatorView
             .add(inRootView: self)
             .setWidth()
-            .setSize(height: 1)
+            .setSize(height: separatorLineHeight)
             .setBottomAlignment()
+    }
+
+    public override convenience
+    init(frame: CGRect) {
+        self.init(titleFont: UIFont.systemFont(ofSize: 14))
     }
 
     required public
@@ -153,8 +197,19 @@ class TabsBarView: UIView, TabsBar {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        indicatorViewWidthConstraint?.constant = selectedButton?.frame.size.width ?? 0
-        indicatorViewLeftAlignment?.constant = selectedButton?.frame.origin.x ?? 0
+        if scrollView.contentSize.width != 0, scrollView.contentSize.width <= scrollView.frame.size.width {
+            stackView.set(alignment: .fill, distribution: .fillProportionally)
+            stackView.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
+            stackView.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
+        } else {
+            stackView.set(alignment: .fill, distribution: .fill)
+            stackView.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = false
+            stackView.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = false
+        }
+
+        selectorViewWidthConstraint?.constant = selectedButton?.frame.size.width ?? 0
+        selectorViewLeftAlignment?.constant = selectedButton?.frame.origin.x ?? 0
+
     }
 
 }

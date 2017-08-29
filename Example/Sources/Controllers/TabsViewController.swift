@@ -15,11 +15,9 @@ class TabsViewController: DStack.TabsViewController<HeaderView, TabsBarView> {
 
     init() {
         super.init(
-            viewControlles: [
+            viewControllers: [
                 CollectionViewController(),
-                CollectionViewControllerSmall(),
-                Example1ViewController(),
-                Example2ViewController()
+                CollectionViewController()
             ]
         )
         title = "Tabs"

@@ -61,15 +61,4 @@ class HeaderView: FlexibleHeader {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Layout
-
-    override
-    func layoutSubviews() {
-        super.layoutSubviews()
-
-        let alpha = (frame.size.height - minHeight) / (maxHeight - minHeight)
-        backgroundImageView.alpha = alpha
-        miniHeader.alpha = 1 - alpha
-    }
-
 }

@@ -71,7 +71,8 @@ class FlexibleHeader: UIView {
 
     // MARK: Initialization
 
-    public init() {
+    public
+    init() {
         super.init(frame: .zero)
 
         heightConstraint = heightAnchor.constraint(equalToConstant: maxHeight)

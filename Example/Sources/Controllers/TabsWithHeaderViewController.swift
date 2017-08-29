@@ -16,8 +16,8 @@ class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView, TabsBa
     init() {
         super.init(
             headerView: HeaderView(),
-            viewControlles: [
-                CollectionViewController(),
+            viewControllers: [
+                TabsViewController(),
                 CollectionViewController(),
                 CollectionViewControllerSmall(),
                 Example1ViewController(),
