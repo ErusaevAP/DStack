@@ -13,7 +13,8 @@ class HeaderView: FlexibleHeader {
 
     // MARK: Properties
 
-    private lazy var miniHeader: UILabel = {
+    private lazy
+    var miniHeader: UILabel = {
         let v = UILabel()
         v.text = "Mini Header"
         v.textAlignment = .center
@@ -21,7 +22,8 @@ class HeaderView: FlexibleHeader {
         return v
     }()
 
-    private let backgroundImageView: UIImageView = {
+    private
+    let backgroundImageView: UIImageView = {
         let v = UIImageView(image: UIImage(named: "header_image"))
         v.contentMode = .scaleAspectFill
         return v
@@ -57,16 +59,6 @@ class HeaderView: FlexibleHeader {
     required
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: Layout
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        let alpha = (frame.size.height - minHeight) / (maxHeight - minHeight)
-        backgroundImageView.alpha = alpha
-        miniHeader.alpha = 1 - alpha
     }
 
 }

@@ -13,12 +13,13 @@ class Example3ViewController: UIViewController {
 
     // MARK: Properties
 
-    private let makeLabel = { (title: String) -> UILabel in
-        let label = UILabel()
-        label.backgroundColor = .red
-        label.text = title
-        label.textAlignment = .center
-        return label
+    private
+    let makeLabel = { (title: String) -> UILabel in
+        let l = UILabel()
+        l.backgroundColor = .red
+        l.text = title
+        l.textAlignment = .center
+        return l
     }
 
     // MARK: Subviews
@@ -80,7 +81,8 @@ class Example3ViewController: UIViewController {
         title = "Example 3"
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required
+    init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

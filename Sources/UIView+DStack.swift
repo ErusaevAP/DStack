@@ -124,6 +124,16 @@ extension UIView {
             .setRightAlignment(fromView: fromView, marge: marge)
     }
 
+    @discardableResult
+    func fill(fromView: UIView? = nil, inset: UIEdgeInsets) -> Self {
+        let fromView = fromView ?? superview
+        return self
+            .setTopAlignment(fromView: fromView, marge: inset.top)
+            .setBottomAlignment(fromView: fromView, marge: inset.bottom)
+            .setLeftAlignment(fromView: fromView, marge: inset.left)
+            .setRightAlignment(fromView: fromView, marge: inset.right)
+    }
+
 }
 
 // MARK: - Alignment

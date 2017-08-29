@@ -13,7 +13,8 @@ class Example1ViewController: UIViewController {
 
     // MARK: Properties
 
-    private let makeLabel = { (title: String) -> UILabel in
+    private
+    let makeLabel = { (title: String) -> UILabel in
         let label = UILabel()
         label.backgroundColor = .red
         label.text = title
@@ -87,7 +88,8 @@ class Example1ViewController: UIViewController {
         title = "Example 1"
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required
+    init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

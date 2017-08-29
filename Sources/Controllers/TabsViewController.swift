@@ -8,30 +8,64 @@
 
 import RxSwift
 import RxCocoa
+import DStack
 import UIKit
+
+public
+protocol ContentDeferredLoading: class {
+
+    var contentLoaded: ((UIViewController) -> Void)? { get set }
+
+}
 
 open
 class TabsViewController<HeaderView: UIView>:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout {
+    UICollectionViewDelegateFlowLayout,
+    ScrollViewProvider {
 
     // MARK: Properties
+
+    public
+    var scrollView: UIScrollView? {
+        return (viewControllers[selectedTabIndex] as? ScrollViewProvider)?.scrollView
+    }
+
+    public
+    var didSetCurrentTab: ((UIViewController) -> Void)?
 
     private
     var disposeBag = DisposeBag()
 
     private
     var topInset: CGFloat {
-        return bar.frame.height
+        return tabsBarView?.frame.height ?? 0
+    }
+
+    public
+    var selectedTabIndex: Int = 0 {
+        didSet {
+            guard selectedTabIndex != oldValue else { return }
+            let indexPath = IndexPath(item: selectedTabIndex, section: 0)
+            containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            tabsBar?.selectedTabIndex = selectedTabIndex
+
+            didSetCurrentTab?(viewControllers[selectedTabIndex])
+        }
     }
 
     public
     let headerView: HeaderView?
 
+    private(set)
+    var tabsBarView: UIView?
+
     public
-    let bar = BarView()
+    var tabsBar: TabsBar? {
+        return tabsBarView as? TabsBar
+    }
 
     private
     let flowLayout: UICollectionViewFlowLayout = {
@@ -54,10 +88,10 @@ class TabsViewController<HeaderView: UIView>:
     }()
 
     open
-    var viewControlles: [UIViewController] {
+    var viewControllers: [UIViewController] {
         didSet {
             if isViewLoaded {
-                bar.model = viewControlles.flatMap { $0.title }.flatMap { $0 }
+                tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
                 containerView.reloadData()
             }
         }
@@ -66,10 +100,10 @@ class TabsViewController<HeaderView: UIView>:
     // MARK: Initialization
 
     public
-    init(headerView: HeaderView? = nil, viewControlles: [UIViewController]) {
+    init(headerView: HeaderView? = nil, viewControllers: [UIViewController]) {
         self.headerView = headerView
-        self.viewControlles = viewControlles
-        self.bar.model = viewControlles.flatMap { $0.title }.flatMap { $0 }
+        self.viewControllers = viewControllers
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -92,19 +126,41 @@ class TabsViewController<HeaderView: UIView>:
     func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         flowLayout.invalidateLayout()
+        tabsBarView?.layoutSubviews()
     }
 
     open override
     func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         flowLayout.invalidateLayout()
+
+        // TODO: live hack will fix in the next comite
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { [weak self] _ in
+            self?.tabsBarView?.layoutSubviews()
+        }
     }
 
     // MARK: UICollectionViewDataSource
 
     public
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            let selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+            tabsBar?.selectedTabIndex = selectedTabIndex
+            didSetCurrentTab?(viewControllers[selectedTabIndex])
+        }
+    }
+
+    public
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        tabsBar?.selectedTabIndex = selectedTabIndex
+        didSetCurrentTab?(viewControllers[selectedTabIndex])
+    }
+
+    public
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewControlles.count
+        return viewControllers.count
     }
 
     public
@@ -124,28 +180,32 @@ class TabsViewController<HeaderView: UIView>:
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        let controller = viewControlles[indexPath.item]
+        let controller = viewControllers[indexPath.item]
         addChildViewController(controller)
         (cell as? ContainerCell)?.model = controller
         controller.didMove(toParentViewController: self)
 
-        if
-            let scrollView = (controller as? ScrollViewProvider)?.scrollView,
-            let headerView = headerView as? FlexibleHeader
-        {
-            scrollView.rx.willBeginDragging.subscribe { [unowned headerView, unowned scrollView] _ in
-                headerView.willBeginDragging(scrollOffset: scrollView.contentOffset)
-            }.addDisposableTo(disposeBag)
+        var flexibleHeader: FlexibleHeader? = headerView as? FlexibleHeader
+        var parenVC: UIViewController? = controller
 
-            scrollView.rx.didEndDragging.subscribe { [unowned headerView, unowned scrollView] _ in
-                let velocity = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-                headerView.didEndDragging(velocity: velocity)
-            }.addDisposableTo(disposeBag)
+        while parenVC != nil {
+            if
+                let topTabsViewController = parenVC as? TabsViewController,
+                let header = topTabsViewController.headerView as? FlexibleHeader
+            {
+                flexibleHeader = header
+            }
+            parenVC = parenVC?.parent
+        }
 
-            scrollView.rx.contentOffset.skip(1).subscribe { [unowned headerView, unowned scrollView] in
-                guard let scrollOffset = $0.element else { return }
-                headerView.scrollOffset = scrollOffset
-            }.addDisposableTo(disposeBag)
+        if let deferredController = controller as? ContentDeferredLoading {
+            deferredController.contentLoaded = { [weak self, weak flexibleHeader] ctrl in
+                if let scrollViewProvider = ctrl as? ScrollViewProvider {
+                    self?.connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
+                }
+            }
+        } else if let scrollViewProvider = controller as? ScrollViewProvider {
+            connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
         }
     }
 
@@ -155,7 +215,8 @@ class TabsViewController<HeaderView: UIView>:
         didEndDisplaying cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        let controller = viewControlles[indexPath.item]
+        let controller = viewControllers[indexPath.item]
+        (controller as? ContentDeferredLoading)?.contentLoaded = nil
         controller.willMove(toParentViewController: nil)
         (cell as? ContainerCell)?.model = nil
         controller.removeFromParentViewController()
@@ -196,10 +257,45 @@ class TabsViewController<HeaderView: UIView>:
         )
     }
 
+    // MARK: Public Methods
+
+    open
+    func buildTabsBarView() -> UIView? {
+        assertionFailure("This method should be overridden")
+        return nil
+    }
+
     // MARK: Private Methods
 
     private
+    func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: FlexibleHeader?) {
+        guard let scrollView = scrollView, let flexibleHeader = flexibleHeader  else { return }
+
+        scrollView.rx.willBeginDragging.subscribe { [unowned flexibleHeader, unowned scrollView] _ in
+            flexibleHeader.willBeginDragging(scrollOffset: scrollView.contentOffset)
+        }.addDisposableTo(disposeBag)
+
+        scrollView.rx.didEndDragging.subscribe { [unowned flexibleHeader, unowned scrollView] _ in
+            let velocity = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+            flexibleHeader.didEndDragging(velocity: velocity)
+        }.addDisposableTo(disposeBag)
+
+        scrollView.rx.contentOffset.skip(1).subscribe { [unowned flexibleHeader, unowned scrollView] in
+            guard let scrollOffset = $0.element else { return }
+            flexibleHeader.scrollOffset = scrollOffset
+        }.addDisposableTo(disposeBag)
+    }
+
+    private
     func configureLayout() {
+        tabsBarView = buildTabsBarView()
+        assert(tabsBar != nil, "Invalid tab bar view")
+
+        tabsBar?.tappedOnTab = { [weak self] in
+            self?.selectedTabIndex = $0
+        }
+        tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
+
         if let headerView = headerView {
             headerView
                 .add(inRootView: view)
@@ -213,7 +309,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            bar
+            tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: 44)
                 .setTopAnchor(anchor: headerView.bottomAnchor)
@@ -226,7 +322,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
-            bar
+            tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: 44)
                 .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
