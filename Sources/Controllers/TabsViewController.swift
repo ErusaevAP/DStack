@@ -272,7 +272,7 @@ class TabsViewController<HeaderView: UIView>:
             flexibleHeader.didEndDragging(velocity: velocity)
         }.addDisposableTo(disposeBag)
 
-        scrollView.rx.contentOffset.skip(1).subscribe { [unowned flexibleHeader, unowned scrollView] in
+        scrollView.rx.contentOffset.skip(1).subscribe { [unowned flexibleHeader] in
             guard let scrollOffset = $0.element else { return }
             flexibleHeader.scrollOffset = scrollOffset
         }.addDisposableTo(disposeBag)
