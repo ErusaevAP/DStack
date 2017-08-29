@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import DStack
 import UIKit
 
 public
@@ -23,15 +22,9 @@ class TabsViewController<HeaderView: UIView>:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout,
-    ScrollViewProvider {
+    UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
-
-    public
-    var scrollView: UIScrollView? {
-        return (viewControllers[selectedTabIndex] as? ScrollViewProvider)?.scrollView
-    }
 
     public
     var didSetCurrentTab: ((UIViewController) -> Void)?

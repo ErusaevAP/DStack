@@ -9,7 +9,7 @@
 import DStack
 import UIKit
 
-class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView, TabsBarView> {
+class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView> {
 
     // MARK: Initialization
 
@@ -30,6 +30,13 @@ class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView, TabsBa
     required
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: Overrided Methods
+
+    override
+    func buildTabsBarView() -> UIView? {
+        return TabsBarView()
     }
 
 }
