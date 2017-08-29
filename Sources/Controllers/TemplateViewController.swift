@@ -1,5 +1,5 @@
 //
-//  TamplateViewController.swift
+//  TemplateViewController.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 open
-class TamplateViewController<View: UIView>: UIViewController {
+class TemplateViewController<View: UIView>: UIViewController {
 
     // MARK: Properties
 
