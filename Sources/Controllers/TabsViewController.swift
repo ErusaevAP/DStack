@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import UIKit
 
 public
 protocol ContentDeferredLoading: class {
