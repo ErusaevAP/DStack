@@ -39,7 +39,13 @@ class TabsViewController<HeaderView: UIView>:
     public
     var selectedTabIndex: Int = 0 {
         didSet {
-            guard selectedTabIndex != oldValue else { return }
+            guard
+                selectedTabIndex < viewControllers.count,
+                selectedTabIndex >= 0,
+                selectedTabIndex != oldValue
+            else {
+                return
+            }
             let indexPath = IndexPath(item: selectedTabIndex, section: 0)
             containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
             tabsBar?.selectedTabIndex = selectedTabIndex

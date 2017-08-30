@@ -36,7 +36,9 @@ class TabsBarView: UIView, TabsBar {
     open
     var selectedTabIndex: Int = 0 {
         didSet {
-            selectedButton = buttons[selectedTabIndex]
+            if selectedTabIndex < buttons.count, selectedTabIndex >= 0 {
+                selectedButton = buttons[selectedTabIndex]
+            }
         }
     }
 
