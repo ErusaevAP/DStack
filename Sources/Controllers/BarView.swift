@@ -60,7 +60,7 @@ class TabsBarView: UIView, TabsBar {
                 return bt
             }
             stackView.add(arrangedSubviews: buttons)
-            selectedTabIndex = min(selectedTabIndex, titles.count - 1)
+            selectedTabIndex = max(min(selectedTabIndex, titles.count - 1), 0)
         }
     }
 
@@ -143,7 +143,7 @@ class TabsBarView: UIView, TabsBar {
         selectedButtonTitleColor: UIColor = .red,
         separatorLineHeight: CGFloat = 1,
         separatorLineColor: UIColor = .gray,
-        selectorLineHeight: CGFloat = 1,
+        selectorLineHeight: CGFloat = 2,
         selectorLineColor: UIColor = .red
     ) {
         self.titleFont = titleFont

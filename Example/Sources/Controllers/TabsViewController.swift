@@ -8,6 +8,8 @@
 
 import DStack
 import UIKit
+import RxCocoa
+import RxSwift
 
 class TabsViewController: DStack.TabsViewController<HeaderView> {
 
@@ -15,10 +17,7 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
 
     init() {
         super.init(
-            viewControllers: [
-                CollectionViewController(),
-                CollectionViewController()
-            ]
+            viewControllers: []
         )
         title = "Tabs"
     }
@@ -28,7 +27,23 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private
+    var disposeBag: DisposeBag?
+
     // MARK: Overrided Methods
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let disposeBag = DisposeBag()
+        Observable<Int>.interval(2.0, scheduler: MainScheduler.instance).subscribe { [weak self] _ in
+            self?.disposeBag = nil
+            self?.viewControllers = [
+                CollectionViewController(),
+                CollectionViewController()
+            ]
+        }.disposed(by: disposeBag)
+        self.disposeBag = disposeBag
+    }
 
     override
     func buildTabsBarView() -> UIView? {

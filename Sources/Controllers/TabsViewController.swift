@@ -90,6 +90,8 @@ class TabsViewController<HeaderView: UIView>:
         didSet {
             if isViewLoaded {
                 tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
+                tabsBar?.selectedTabIndex = selectedTabIndex
+                tabsBarView?.layoutSubviews()
                 containerView.reloadData()
             }
         }
@@ -269,18 +271,18 @@ class TabsViewController<HeaderView: UIView>:
     func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: FlexibleHeader?) {
         guard let scrollView = scrollView, let flexibleHeader = flexibleHeader  else { return }
 
-        scrollView.rx.willBeginDragging.subscribe { [unowned flexibleHeader, unowned scrollView] _ in
-            flexibleHeader.willBeginDragging(scrollOffset: scrollView.contentOffset)
+        scrollView.rx.willBeginDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
+            flexibleHeader?.willBeginDragging(scrollOffset: scrollView?.contentOffset ?? .zero)
         }.addDisposableTo(disposeBag)
 
-        scrollView.rx.didEndDragging.subscribe { [unowned flexibleHeader, unowned scrollView] _ in
-            let velocity = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-            flexibleHeader.didEndDragging(velocity: velocity)
+        scrollView.rx.didEndDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
+            let velocity = scrollView?.panGestureRecognizer.translation(in: scrollView?.superview)
+            flexibleHeader?.didEndDragging(velocity: velocity ?? .zero)
         }.addDisposableTo(disposeBag)
 
-        scrollView.rx.contentOffset.skip(1).subscribe { [unowned flexibleHeader] in
+        scrollView.rx.contentOffset.skip(1).subscribe { [weak flexibleHeader] in
             guard let scrollOffset = $0.element else { return }
-            flexibleHeader.scrollOffset = scrollOffset
+            flexibleHeader?.scrollOffset = scrollOffset
         }.addDisposableTo(disposeBag)
     }
 
@@ -293,7 +295,7 @@ class TabsViewController<HeaderView: UIView>:
             self?.selectedTabIndex = $0
         }
         tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
-
+        tabsBar?.selectedTabIndex = selectedTabIndex
         if let headerView = headerView {
             headerView
                 .add(inRootView: view)
