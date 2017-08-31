@@ -21,6 +21,8 @@ protocol TabsBar: class {
 
     var titles: [String] { get set }
 
+    var height: CGFloat { get }
+
 }
 
 // MARK: -
@@ -62,6 +64,11 @@ class TabsBarView: UIView, TabsBar {
             stackView.add(arrangedSubviews: buttons)
             selectedTabIndex = max(min(selectedTabIndex, titles.count - 1), 0)
         }
+    }
+
+    open
+    var height: CGFloat {
+        return 44
     }
 
     private

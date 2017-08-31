@@ -311,7 +311,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
             tabsBarView?
                 .add(inRootView: view)
-                .setSize(height: 44)
+                .setSize(height: tabsBar?.height)
                 .setTopAnchor(anchor: headerView.bottomAnchor)
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
@@ -324,7 +324,7 @@ class TabsViewController<HeaderView: UIView>:
                 .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
             tabsBarView?
                 .add(inRootView: view)
-                .setSize(height: 44)
+                .setSize(height: tabsBar?.height)
                 .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
                 .setLeftAnchor(anchor: view.leftAnchor)
                 .setRightAnchor(anchor: view.rightAnchor)
