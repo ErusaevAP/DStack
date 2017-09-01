@@ -57,44 +57,87 @@ extension UIView {
 
 }
 
-// MARK: - Anchor
+// MARK: - Anchor EqualTo
 
 public
 extension UIView {
 
     @discardableResult
-    func setTopAnchor(anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
-        topAnchor.constraint(equalTo: anchor, constant: marge).isActive = true
-        return self
-    }
-
-    @discardableResult
-    func setBottomAnchor(anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
-        bottomAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
-        return self
-    }
-
-    @discardableResult
-    func setLeftAnchor(anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+    func setLeftAnchor(equalTo anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
         leftAnchor.constraint(equalTo: anchor, constant: marge).isActive = true
         return self
     }
 
     @discardableResult
-    func setRightAnchor(anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+    func setRightAnchor(equalTo anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
         rightAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
         return self
     }
 
     @discardableResult
-    func setHeightAnchor(anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+    func setTopAnchor(equalTo anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        topAnchor.constraint(equalTo: anchor, constant: marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setBottomAnchor(equalTo anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        bottomAnchor.constraint(equalTo: anchor, constant: -marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setHeightAnchor(equalTo anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
         heightAnchor.constraint(equalTo: anchor, multiplier: 1).isActive = true
         return self
     }
 
     @discardableResult
-    func setWidthAnchor(anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+    func setWidthAnchor(equalTo anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
         widthAnchor.constraint(equalTo: anchor, multiplier: 1).isActive = true
+        return self
+    }
+
+}
+
+// MARK: - Anchor GreaterThanOrEqualTo
+
+public
+extension UIView {
+
+    @discardableResult
+    func setLeftAnchor(greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+        leftAnchor.constraint(greaterThanOrEqualTo: anchor, constant: marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setRightAnchor(greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor, marge: CGFloat = 0) -> Self {
+        rightAnchor.constraint(greaterThanOrEqualTo: anchor, constant: -marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setTopAnchor(greaterThanOrEqualTo anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        topAnchor.constraint(greaterThanOrEqualTo: anchor, constant: marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setBottomAnchor(greaterThanOrEqualTo anchor: NSLayoutYAxisAnchor, marge: CGFloat = 0) -> Self {
+        bottomAnchor.constraint(greaterThanOrEqualTo: anchor, constant: -marge).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setHeightAnchor(greaterThanOrEqualTo anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+        heightAnchor.constraint(greaterThanOrEqualTo: anchor, multiplier: 1).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setWidthAnchor(greaterThanOrEqualTo anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
+        widthAnchor.constraint(greaterThanOrEqualTo: anchor, multiplier: 1).isActive = true
         return self
     }
 
@@ -108,10 +151,10 @@ extension UIView {
     @discardableResult
     func fill(viewController: UIViewController, marge: CGFloat = 0) -> Self {
         return self
-            .setTopAnchor(anchor: viewController.topLayoutGuide.bottomAnchor, marge: marge)
-            .setRightAnchor(anchor: viewController.view.rightAnchor, marge: marge)
-            .setBottomAnchor(anchor: viewController.bottomLayoutGuide.topAnchor, marge: marge)
-            .setLeftAnchor(anchor: viewController.view.leftAnchor, marge: marge)
+            .setTopAnchor(equalTo: viewController.topLayoutGuide.bottomAnchor, marge: marge)
+            .setRightAnchor(equalTo: viewController.view.rightAnchor, marge: marge)
+            .setBottomAnchor(equalTo: viewController.bottomLayoutGuide.topAnchor, marge: marge)
+            .setLeftAnchor(equalTo: viewController.view.leftAnchor, marge: marge)
     }
 
     @discardableResult
@@ -146,7 +189,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setTopAnchor(anchor: view.topAnchor, marge: marge)
+        return setTopAnchor(equalTo: view.topAnchor, marge: marge)
     }
 
     @discardableResult
@@ -154,7 +197,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setBottomAnchor(anchor: view.bottomAnchor, marge: marge)
+        return setBottomAnchor(equalTo: view.bottomAnchor, marge: marge)
     }
 
     @discardableResult
@@ -162,7 +205,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setLeftAnchor(anchor: view.leftAnchor, marge: marge)
+        return setLeftAnchor(equalTo: view.leftAnchor, marge: marge)
     }
 
     @discardableResult
@@ -170,7 +213,7 @@ extension UIView {
         let fromView = fromView ?? superview
         guard let view = fromView else { return self }
 
-        return setRightAnchor(anchor: view.rightAnchor, marge: marge)
+        return setRightAnchor(equalTo: view.rightAnchor, marge: marge)
     }
 
 }

@@ -78,7 +78,7 @@ class Example2ViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Example 2"
+        title = "Example Example"
     }
 
     required

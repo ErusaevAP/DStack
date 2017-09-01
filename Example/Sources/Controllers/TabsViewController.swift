@@ -8,8 +8,6 @@
 
 import DStack
 import UIKit
-import RxCocoa
-import RxSwift
 
 class TabsViewController: DStack.TabsViewController<HeaderView> {
 
@@ -17,7 +15,10 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
 
     init() {
         super.init(
-            viewControllers: []
+            viewControllers: [
+                ctrl1,
+                ctrl3
+            ]
         )
         title = "Tabs"
     }
@@ -27,27 +28,53 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private
-    var disposeBag: DisposeBag?
-
     // MARK: Overrided Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let disposeBag = DisposeBag()
-        Observable<Int>.interval(2.0, scheduler: MainScheduler.instance).subscribe { [weak self] _ in
-            self?.disposeBag = nil
-            self?.viewControllers = [
-                CollectionViewController(),
-                CollectionViewController()
-            ]
-        }.disposed(by: disposeBag)
-        self.disposeBag = disposeBag
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "2",
+            style: .done,
+            target: self,
+            action: #selector(tap2)
+        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "4",
+            style: .done,
+            target: self,
+            action: #selector(tap4)
+        )
     }
 
     override
     func buildTabsBarView() -> UIView? {
         return TabsBarView()
+    }
+
+    // MARK: Actions
+
+    private let ctrl1 = Example1ViewController()
+    private let ctrl2 = Example2ViewController()
+    private let ctrl3 = Example3ViewController()
+    private let ctrl4 = CollectionViewController()
+
+    @objc private
+    func tap2() {
+        viewControllers = [
+            ctrl1,
+            ctrl3
+        ]
+    }
+
+    @objc private
+    func tap4() {
+        viewControllers = [
+            ctrl1,
+            ctrl2,
+            ctrl3,
+            ctrl4
+        ]
     }
 
 }

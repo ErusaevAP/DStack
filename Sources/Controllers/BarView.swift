@@ -48,7 +48,7 @@ class TabsBarView: UIView, TabsBar {
     var titles: [String] = [] {
         didSet {
             disposeBag = DisposeBag()
-            buttons.forEach { stackView.removeArrangedSubview($0) }
+
             buttons = titles.enumerated().flatMap { obj -> UIButton in
                 let bt = UIButton()
                 bt.setTitle(obj.element, for: .normal)
@@ -59,10 +59,12 @@ class TabsBarView: UIView, TabsBar {
                 bt.setTitleColor(buttonTitleColor, for: .normal)
                 bt.setTitleColor(selectedButtonTitleColor, for: .selected)
                 bt.titleLabel?.font = titleFont
+                bt.translatesAutoresizingMaskIntoConstraints = false
                 return bt
             }
-            stackView.add(arrangedSubviews: buttons)
+
             selectedTabIndex = max(min(selectedTabIndex, titles.count - 1), 0)
+            updateConstraints()
         }
     }
 
@@ -103,7 +105,7 @@ class TabsBarView: UIView, TabsBar {
 
             selectedButton.isSelected = true
             scrollView.scrollRectToVisible(selectedButton.frame, animated: true)
-            layoutSubviews()
+            updateSelectorConstraints()
         }
     }
 
@@ -127,13 +129,18 @@ class TabsBarView: UIView, TabsBar {
     private
     var scrollView: UIScrollView = {
         let s = UIScrollView()
-        s.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        s.clipsToBounds = false
         s.showsHorizontalScrollIndicator = false
         return s
     }()
 
     private
-    var buttons: [UIButton] = []
+    var buttons: [UIButton] = [] {
+        didSet {
+            oldValue.forEach { stackView.removeArrangedSubview($0) }
+            buttons.forEach { stackView.add(arrangedSubviews: $0) }
+        }
+    }
 
     private
     var selectorViewWidthConstraint: NSLayoutConstraint?
@@ -162,32 +169,7 @@ class TabsBarView: UIView, TabsBar {
         self.selectorLineColor = selectorLineColor
         super.init(frame: .zero)
 
-        scrollView
-            .add(inRootView: self)
-            .fill()
-
-        selectorView
-            .add(inRootView: scrollView)
-            .setSize(height: selectorLineHeight)
-            .setBottomAlignment()
-
-        selectorViewWidthConstraint = selectorView.widthAnchor.constraint(equalToConstant: 0)
-        selectorViewLeftAlignment = selectorView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0)
-        selectorViewWidthConstraint?.isActive = true
-        selectorViewLeftAlignment?.isActive = true
-
-        stackView = UIStackView()
-            .set(axis: .horizontal, spacing: 10)
-            .set(alignment: .fill, distribution: .fillProportionally)
-            .add(inRootView: scrollView)
-            .fill()
-            .setHeight()
-
-        separatorView
-            .add(inRootView: self)
-            .setWidth()
-            .setSize(height: separatorLineHeight)
-            .setBottomAlignment()
+        configureSubviews()
     }
 
     public override convenience
@@ -206,19 +188,59 @@ class TabsBarView: UIView, TabsBar {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        if scrollView.contentSize.width != 0, scrollView.contentSize.width <= scrollView.frame.size.width {
-            stackView.set(alignment: .fill, distribution: .fillProportionally)
-            stackView.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
-            stackView.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
-        } else {
-            stackView.set(alignment: .fill, distribution: .fill)
-            stackView.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = false
-            stackView.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = false
-        }
+        updateSelectorConstraints()
+    }
 
+    // MARK: Private Methods
+
+    private
+    func configureSubviews() {
+        clipsToBounds = false
+        scrollView
+            .add(inRootView: self)
+            .setCenter()
+            .setTopAlignment()
+            .setBottomAlignment()
+
+        let l = scrollView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor)
+        l.priority = 250
+        l.isActive = true
+        let t = scrollView.trailingAnchor.constraint(greaterThanOrEqualTo:  trailingAnchor)
+        t.priority = 250
+        t.isActive = true
+
+        selectorView
+            .add(inRootView: scrollView)
+            .setSize(height: selectorLineHeight)
+            .setBottomAlignment()
+
+        selectorViewWidthConstraint = selectorView.widthAnchor.constraint(equalToConstant: 0)
+        selectorViewLeftAlignment = selectorView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0)
+        selectorViewWidthConstraint?.isActive = true
+        selectorViewLeftAlignment?.isActive = true
+
+        stackView = UIStackView()
+            .set(axis: .horizontal, spacing: 10, alignment: .center, distribution: .fill)
+            .add(inRootView: scrollView)
+            .setBottomAnchor(equalTo: scrollView.bottomAnchor)
+            .setTopAnchor(equalTo: scrollView.topAnchor)
+            .setHeightAnchor(equalTo: scrollView.heightAnchor)
+            .setWidthAnchor(greaterThanOrEqualTo: scrollView.widthAnchor)
+
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+
+        separatorView
+            .add(inRootView: self)
+            .setWidth()
+            .setSize(height: separatorLineHeight)
+            .setBottomAlignment()
+    }
+
+    private
+    func updateSelectorConstraints() {
         selectorViewWidthConstraint?.constant = selectedButton?.frame.size.width ?? 0
         selectorViewLeftAlignment?.constant = selectedButton?.frame.origin.x ?? 0
-
     }
 
 }

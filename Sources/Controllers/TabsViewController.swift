@@ -16,12 +16,16 @@ protocol ContentDeferredLoading: class {
 
 }
 
+// swiftlint:disable type_body_length
+
 open
 class TabsViewController<HeaderView: UIView>:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout {
+
+// swiftlint:enable type_body_length
 
     // MARK: Properties
 
@@ -49,10 +53,13 @@ class TabsViewController<HeaderView: UIView>:
             let indexPath = IndexPath(item: selectedTabIndex, section: 0)
             containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
             tabsBar?.selectedTabIndex = selectedTabIndex
-
+            selectedViewController = viewControllers[selectedTabIndex]
             didSetCurrentTab?(viewControllers[selectedTabIndex])
         }
     }
+
+    private
+    var selectedViewController: UIViewController?
 
     public
     let headerView: HeaderView?
@@ -90,9 +97,17 @@ class TabsViewController<HeaderView: UIView>:
         didSet {
             if isViewLoaded {
                 tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
-                tabsBar?.selectedTabIndex = selectedTabIndex
                 tabsBarView?.layoutSubviews()
                 containerView.reloadData()
+                if let selectedViewController = selectedViewController {
+                    if let currentIndex = viewControllers.index(of: selectedViewController) {
+                        selectedTabIndex = currentIndex
+                    } else {
+                        selectedTabIndex = min(tabsBar?.selectedTabIndex ?? 0, viewControllers.count - 1)
+                    }
+                } else {
+                    selectedTabIndex = 0
+                }
             }
         }
     }
@@ -133,11 +148,6 @@ class TabsViewController<HeaderView: UIView>:
     func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         flowLayout.invalidateLayout()
-
-        // TODO: live hack will fix in the next comite
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { [weak self] _ in
-            self?.tabsBarView?.layoutSubviews()
-        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -215,11 +225,11 @@ class TabsViewController<HeaderView: UIView>:
         didEndDisplaying cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        let controller = viewControllers[indexPath.item]
-        (controller as? ContentDeferredLoading)?.contentLoaded = nil
+        guard let cell = (cell as? ContainerCell), let controller = cell.model else { return }
         controller.willMove(toParentViewController: nil)
-        (cell as? ContainerCell)?.model = nil
+        cell.model = nil
         controller.removeFromParentViewController()
+        (controller as? ContentDeferredLoading)?.contentLoaded = nil
     }
 
     public
@@ -299,35 +309,35 @@ class TabsViewController<HeaderView: UIView>:
         if let headerView = headerView {
             headerView
                 .add(inRootView: view)
-                .setHeightAnchor(anchor: headerView.heightAnchor)
-                .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
-                .setLeftAnchor(anchor: view.leftAnchor)
-                .setRightAnchor(anchor: view.rightAnchor)
+                .setHeightAnchor(equalTo: headerView.heightAnchor)
+                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setLeftAnchor(equalTo: view.leftAnchor)
+                .setRightAnchor(equalTo: view.rightAnchor)
             containerView
                 .add(inRootView: view)
-                .setTopAnchor(anchor: headerView.bottomAnchor)
-                .setLeftAnchor(anchor: view.leftAnchor)
-                .setRightAnchor(anchor: view.rightAnchor)
-                .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
+                .setTopAnchor(equalTo: headerView.bottomAnchor)
+                .setLeftAnchor(equalTo: view.leftAnchor)
+                .setRightAnchor(equalTo: view.rightAnchor)
+                .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
             tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: tabsBar?.height)
-                .setTopAnchor(anchor: headerView.bottomAnchor)
-                .setLeftAnchor(anchor: view.leftAnchor)
-                .setRightAnchor(anchor: view.rightAnchor)
+                .setTopAnchor(equalTo: headerView.bottomAnchor)
+                .setLeftAnchor(equalTo: view.leftAnchor, marge: 5)
+                .setRightAnchor(equalTo: view.rightAnchor, marge: 5)
         } else {
             containerView
                 .add(inRootView: view)
-                .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
-                .setLeftAnchor(anchor: view.leftAnchor)
-                .setRightAnchor(anchor: view.rightAnchor)
-                .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor)
+                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setLeftAnchor(equalTo: view.leftAnchor)
+                .setRightAnchor(equalTo: view.rightAnchor)
+                .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
             tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: tabsBar?.height)
-                .setTopAnchor(anchor: topLayoutGuide.bottomAnchor)
-                .setLeftAnchor(anchor: view.leftAnchor)
-                .setRightAnchor(anchor: view.rightAnchor)
+                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setLeftAnchor(equalTo: view.leftAnchor, marge: 5)
+                .setRightAnchor(equalTo: view.rightAnchor, marge: 5)
         }
     }
 
