@@ -137,7 +137,7 @@ class TabsBarView: UIView, TabsBar {
     private
     var buttons: [UIButton] = [] {
         didSet {
-            oldValue.forEach { stackView.removeArrangedSubview($0) }
+            oldValue.forEach { $0.removeFromSuperview() }
             buttons.forEach { stackView.add(arrangedSubviews: $0) }
         }
     }
