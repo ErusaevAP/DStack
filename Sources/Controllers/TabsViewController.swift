@@ -9,6 +9,10 @@
 import RxSwift
 import RxCocoa
 
+// swiftlint:disable type_body_length
+
+// MARK: -
+
 public
 protocol ContentDeferredLoading: class {
 
@@ -16,7 +20,7 @@ protocol ContentDeferredLoading: class {
 
 }
 
-// swiftlint:disable type_body_length
+// MARK: -
 
 open
 class TabsViewController<HeaderView: UIView>:
@@ -24,8 +28,6 @@ class TabsViewController<HeaderView: UIView>:
     UICollectionViewDelegate,
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout {
-
-// swiftlint:enable type_body_length
 
     // MARK: Properties
 
@@ -45,17 +47,24 @@ class TabsViewController<HeaderView: UIView>:
         didSet {
             guard
                 selectedTabIndex < viewControllers.count,
-                selectedTabIndex >= 0,
-                selectedTabIndex != oldValue
+                selectedTabIndex >= 0
             else {
                 return
             }
-            let indexPath = IndexPath(item: selectedTabIndex, section: 0)
-            containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-            tabsBar?.selectedTabIndex = selectedTabIndex
-            selectedViewController = viewControllers[selectedTabIndex]
-            didSetCurrentTab?(viewControllers[selectedTabIndex])
+            configureSelectedTab()
         }
+    }
+
+    private
+    func configureSelectedTab() {
+        if viewControllers.isEmpty { return }
+        let indexPath = IndexPath(item: selectedTabIndex, section: 0)
+        containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+
+        tabsBar?.selectedTabIndex = selectedTabIndex
+        let ctrl = viewControllers[selectedTabIndex]
+        selectedViewController = ctrl
+        didSetCurrentTab?(ctrl)
     }
 
     public
@@ -215,6 +224,10 @@ class TabsViewController<HeaderView: UIView>:
         addChildViewController(controller)
         (cell as? ContainerCell)?.model = controller
         controller.didMove(toParentViewController: self)
+
+        if selectedViewController == nil {
+            selectedViewController = controller
+        }
     }
 
     public
