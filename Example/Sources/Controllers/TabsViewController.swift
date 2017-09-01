@@ -17,7 +17,7 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
         super.init(
             viewControllers: [
                 ctrl1,
-                ctrl3
+                ctrl4
             ]
         )
         title = "Tabs"
@@ -63,7 +63,7 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
     func tap2() {
         viewControllers = [
             ctrl1,
-            ctrl3
+            ctrl4
         ]
     }
 

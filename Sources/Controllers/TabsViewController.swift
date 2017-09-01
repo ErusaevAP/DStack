@@ -58,9 +58,6 @@ class TabsViewController<HeaderView: UIView>:
         }
     }
 
-    private
-    var selectedViewController: UIViewController?
-
     public
     let headerView: HeaderView?
 
@@ -91,6 +88,34 @@ class TabsViewController<HeaderView: UIView>:
         v.register(ContainerCell.self, forCellWithReuseIdentifier: ContainerCell.reuseIdentifier)
         return v
     }()
+
+    private(set)
+    var selectedViewController: UIViewController? {
+        didSet {
+            var flexibleHeader: FlexibleHeader? = headerView as? FlexibleHeader
+            var parenVC: UIViewController? = selectedViewController
+
+            while parenVC != nil {
+                if
+                    let topTabsViewController = parenVC as? TabsViewController,
+                    let header = topTabsViewController.headerView as? FlexibleHeader
+                {
+                    flexibleHeader = header
+                }
+                parenVC = parenVC?.parent
+            }
+
+            if let deferredController = selectedViewController as? ContentDeferredLoading {
+                deferredController.contentLoaded = { [weak self, weak flexibleHeader] ctrl in
+                    if let scrollViewProvider = ctrl as? ScrollViewProvider {
+                        self?.connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
+                    }
+                }
+            } else if let scrollViewProvider = selectedViewController as? ScrollViewProvider {
+                connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
+            }
+        }
+    }
 
     open
     var viewControllers: [UIViewController] {
@@ -155,17 +180,13 @@ class TabsViewController<HeaderView: UIView>:
     public
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            let selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-            tabsBar?.selectedTabIndex = selectedTabIndex
-            didSetCurrentTab?(viewControllers[selectedTabIndex])
+            selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         }
     }
 
     public
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        tabsBar?.selectedTabIndex = selectedTabIndex
-        didSetCurrentTab?(viewControllers[selectedTabIndex])
+        selectedTabIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
 
     public
@@ -194,29 +215,6 @@ class TabsViewController<HeaderView: UIView>:
         addChildViewController(controller)
         (cell as? ContainerCell)?.model = controller
         controller.didMove(toParentViewController: self)
-
-        var flexibleHeader: FlexibleHeader? = headerView as? FlexibleHeader
-        var parenVC: UIViewController? = controller
-
-        while parenVC != nil {
-            if
-                let topTabsViewController = parenVC as? TabsViewController,
-                let header = topTabsViewController.headerView as? FlexibleHeader
-            {
-                flexibleHeader = header
-            }
-            parenVC = parenVC?.parent
-        }
-
-        if let deferredController = controller as? ContentDeferredLoading {
-            deferredController.contentLoaded = { [weak self, weak flexibleHeader] ctrl in
-                if let scrollViewProvider = ctrl as? ScrollViewProvider {
-                    self?.connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
-                }
-            }
-        } else if let scrollViewProvider = controller as? ScrollViewProvider {
-            connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
-        }
     }
 
     public
@@ -280,7 +278,7 @@ class TabsViewController<HeaderView: UIView>:
     private
     func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: FlexibleHeader?) {
         guard let scrollView = scrollView, let flexibleHeader = flexibleHeader  else { return }
-
+        disposeBag = DisposeBag()
         scrollView.rx.willBeginDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
             flexibleHeader?.willBeginDragging(scrollOffset: scrollView?.contentOffset ?? .zero)
         }.addDisposableTo(disposeBag)
