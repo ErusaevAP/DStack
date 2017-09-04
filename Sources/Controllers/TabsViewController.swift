@@ -239,7 +239,6 @@ class TabsViewController<HeaderView: UIView>:
         controller.willMove(toParentViewController: nil)
         cell.model = nil
         controller.removeFromParentViewController()
-        (controller as? ContentDeferredLoading)?.contentLoaded = nil
     }
 
     public
