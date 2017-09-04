@@ -55,11 +55,16 @@ class TabsViewController<HeaderView: UIView>:
         }
     }
 
+    open
+    var isAnimatedScroolWhenTabSelected: Bool {
+        return false
+    }
+
     private
     func configureSelectedTab() {
         if viewControllers.isEmpty { return }
         let indexPath = IndexPath(item: selectedTabIndex, section: 0)
-        containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: isAnimatedScroolWhenTabSelected)
 
         tabsBar?.selectedTabIndex = selectedTabIndex
         let ctrl = viewControllers[selectedTabIndex]
