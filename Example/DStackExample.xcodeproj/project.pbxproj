@@ -26,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		3D41A0431F4C428C00C10118 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
+		3D6C7BCD1F5D688000A97934 /* DStack.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DStack.podspec; path = ../../DStack.podspec; sourceTree = "<group>"; };
 		3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3D869B051F31E3AB00AB5F97 /* DStackExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DStackExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		3D869B071F31E3AB00AB5F97 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3D6C7BCD1F5D688000A97934 /* DStack.podspec */,
 				3DA674E61F45C6A10097E294 /* Views */,
 				3D869B1F1F31F9D300AB5F97 /* Controllers */,
 				3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */,

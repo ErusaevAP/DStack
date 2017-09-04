@@ -19,8 +19,8 @@ class MainViewController: UITabBarController {
 
         setViewControllers(
             [
-                TabsViewController().navigationController,
                 TabsWithHeaderViewController().navigationController,
+                TabsViewController().navigationController,
                 Example1ViewController().navigationController,
                 Example2ViewController().navigationController,
                 Example3ViewController().navigationController

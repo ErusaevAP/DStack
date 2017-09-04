@@ -102,7 +102,7 @@ class TabsViewController<HeaderView: UIView>:
     var selectedViewController: UIViewController? {
         didSet {
             var flexibleHeader: FlexibleHeader? = headerView as? FlexibleHeader
-            var parenVC: UIViewController? = selectedViewController
+            var parenVC: UIViewController? = self
 
             while parenVC != nil {
                 if
