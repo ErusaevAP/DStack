@@ -131,7 +131,6 @@ class TabsViewController<HeaderView: UIView>:
         didSet {
             if isViewLoaded {
                 tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
-                tabsBarView?.layoutSubviews()
                 containerView.reloadData()
                 if let selectedViewController = selectedViewController {
                     if let currentIndex = viewControllers.index(of: selectedViewController) {

@@ -62,9 +62,6 @@ class TabsBarView: UIView, TabsBar {
                 bt.translatesAutoresizingMaskIntoConstraints = false
                 return bt
             }
-
-            selectedTabIndex = max(min(selectedTabIndex, titles.count - 1), 0)
-            updateConstraints()
         }
     }
 
@@ -104,8 +101,9 @@ class TabsBarView: UIView, TabsBar {
             guard let selectedButton = selectedButton else { return }
 
             selectedButton.isSelected = true
-            scrollView.scrollRectToVisible(selectedButton.frame, animated: true)
+            layoutIfNeeded()
             updateSelectorConstraints()
+            scrollView.scrollRectToVisible(selectedButton.frame, animated: true)
         }
     }
 
@@ -232,7 +230,8 @@ class TabsBarView: UIView, TabsBar {
 
         separatorView
             .add(inRootView: self)
-            .setWidth()
+            .setLeftAlignment(marge: -10)
+            .setRightAlignment(marge: -10)
             .setSize(height: separatorLineHeight)
             .setBottomAlignment()
     }

@@ -15,10 +15,7 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
 
     init() {
         super.init(
-            viewControllers: [
-                ctrl4,
-                ctrl1
-            ]
+            viewControllers: []
         )
         title = "Tabs"
     }
@@ -33,6 +30,7 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewControllers = [ctrl4, ctrl1]
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "2",
             style: .done,
