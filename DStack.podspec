@@ -12,16 +12,22 @@ Pod::Spec.new do |s|
 
     s.platform      = :ios, "10.0"
     s.source        = { :git => "https://github.com/erusaevap/DStack.git", :tag => "#{s.version}" }
-    s.source_files  = 'Sources/*.{swift}'
+
 
     # s.resource    = "icon.png"
     # s.resources   = "Resources/*.png"
 
     s.dependency "RxSwift"
     s.dependency "RxCocoa"
+    s.default_subspec = 'Core'
+
+    s.subspec 'Core' do |core|
+        core.source_files  = 'Sources/*.{swift}'
+    end
 
     s.subspec 'Controllers' do |core|
         core.source_files   = 'Sources/Controllers/**/*.{swift}'
+    core.dependency 'DStack/Core'
     end
 
 end
