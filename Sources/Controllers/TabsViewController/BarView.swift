@@ -199,13 +199,8 @@ class TabsBarView: UIView, TabsBar {
             .setCenter()
             .setTopAlignment()
             .setBottomAlignment()
-
-        let l = scrollView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor)
-        l.priority = 250
-        l.isActive = true
-        let t = scrollView.trailingAnchor.constraint(greaterThanOrEqualTo:  trailingAnchor)
-        t.priority = 250
-        t.isActive = true
+            .setLeadingAnchor(greaterThanOrEqualTo: leadingAnchor, priority: 250)
+            .setTrailingAnchor(greaterThanOrEqualTo: trailingAnchor, priority: 250)
 
         selectorView
             .add(inRootView: scrollView)
@@ -224,9 +219,8 @@ class TabsBarView: UIView, TabsBar {
             .setTopAnchor(equalTo: scrollView.topAnchor)
             .setHeightAnchor(equalTo: scrollView.heightAnchor)
             .setWidthAnchor(greaterThanOrEqualTo: scrollView.widthAnchor)
-
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
+            .setLeadingAnchor(equalTo: scrollView.leadingAnchor)
+            .setTrailingAnchor(equalTo: scrollView.trailingAnchor)
 
         separatorView
             .add(inRootView: self)

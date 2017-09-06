@@ -98,6 +98,30 @@ extension UIView {
         return self
     }
 
+    @discardableResult
+    func setLeadingAnchor(
+        equalTo anchor: NSLayoutXAxisAnchor,
+        marge: CGFloat = 0,
+        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+    ) -> Self {
+        let c = leadingAnchor.constraint(equalTo: anchor)
+        c.isActive = true
+        c.priority = priority
+        return self
+    }
+
+    @discardableResult
+    func setTrailingAnchor(
+        equalTo anchor: NSLayoutXAxisAnchor,
+        marge: CGFloat = 0,
+        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+    ) -> Self {
+        let c = trailingAnchor.constraint(equalTo: anchor)
+        c.isActive = true
+        c.priority = priority
+        return self
+    }
+
 }
 
 // MARK: - Anchor GreaterThanOrEqualTo
@@ -138,6 +162,30 @@ extension UIView {
     @discardableResult
     func setWidthAnchor(greaterThanOrEqualTo anchor: NSLayoutDimension, marge: CGFloat = 0) -> Self {
         widthAnchor.constraint(greaterThanOrEqualTo: anchor, multiplier: 1).isActive = true
+        return self
+    }
+
+    @discardableResult
+    func setLeadingAnchor(
+        greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor,
+        marge: CGFloat = 0,
+        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+    ) -> Self {
+        let c = leadingAnchor.constraint(greaterThanOrEqualTo: anchor)
+        c.isActive = true
+        c.priority = priority
+        return self
+    }
+
+    @discardableResult
+    func setTrailingAnchor(
+        greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor,
+        marge: CGFloat = 0,
+        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+    ) -> Self {
+        let c = trailingAnchor.constraint(greaterThanOrEqualTo: anchor)
+        c.isActive = true
+        c.priority = priority
         return self
     }
 
