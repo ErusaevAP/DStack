@@ -25,9 +25,9 @@ Pod::Spec.new do |s|
         core.source_files  = 'Sources/*.{swift}'
     end
 
-    s.subspec 'Controllers' do |core|
-        core.source_files   = 'Sources/Controllers/**/*.{swift}'
-    core.dependency 'DStack/Core'
+    s.subspec 'Controllers' do |controllers|
+        controllers.source_files   = 'Sources/Controllers/**/*.{swift}'
+        controllers.dependency 'DStack/Core'
     end
 
 end
