@@ -7,7 +7,9 @@ platform :ios, '10.0'
 
 target 'DStackExample' do
 
-    pod 'DStack', :path => '..'
+    pod 'DStack',
+        :subspecs => ['Controllers'],
+        :path => '..'
     pod 'SwiftLint'
 
 end
