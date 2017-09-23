@@ -102,7 +102,7 @@ extension UIView {
     func setLeadingAnchor(
         equalTo anchor: NSLayoutXAxisAnchor,
         marge: CGFloat = 0,
-        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+        priority: UILayoutPriority = .defaultHigh
     ) -> Self {
         let c = leadingAnchor.constraint(equalTo: anchor)
         c.isActive = true
@@ -114,7 +114,7 @@ extension UIView {
     func setTrailingAnchor(
         equalTo anchor: NSLayoutXAxisAnchor,
         marge: CGFloat = 0,
-        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+        priority: UILayoutPriority = .defaultHigh
     ) -> Self {
         let c = trailingAnchor.constraint(equalTo: anchor)
         c.isActive = true
@@ -169,7 +169,7 @@ extension UIView {
     func setLeadingAnchor(
         greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor,
         marge: CGFloat = 0,
-        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+        priority: UILayoutPriority = .defaultHigh
     ) -> Self {
         let c = leadingAnchor.constraint(greaterThanOrEqualTo: anchor)
         c.isActive = true
@@ -181,7 +181,7 @@ extension UIView {
     func setTrailingAnchor(
         greaterThanOrEqualTo anchor: NSLayoutXAxisAnchor,
         marge: CGFloat = 0,
-        priority: UILayoutPriority = UILayoutPriorityDefaultHigh
+        priority: UILayoutPriority = .defaultHigh
     ) -> Self {
         let c = trailingAnchor.constraint(greaterThanOrEqualTo: anchor)
         c.isActive = true

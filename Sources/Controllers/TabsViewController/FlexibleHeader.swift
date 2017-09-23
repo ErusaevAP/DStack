@@ -76,7 +76,7 @@ class FlexibleHeader: UIView {
         super.init(frame: .zero)
 
         heightConstraint = heightAnchor.constraint(equalToConstant: maxHeight)
-        heightConstraint?.priority = UILayoutPriorityRequired
+        heightConstraint?.priority = .required
         heightConstraint?.isActive = true
     }
 

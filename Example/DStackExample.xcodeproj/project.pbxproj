@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3B3F7B1F66C7A800788B78 /* DStackExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */; };
 		3D41A0441F4C428C00C10118 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41A0431F4C428C00C10118 /* TabsViewController.swift */; };
 		3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */; };
 		3D869B091F31E3AB00AB5F97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */; };
@@ -24,7 +25,20 @@
 		4CFBD0E824FBABC2B635AD78 /* Pods_DStackExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC618B2CA60CD56C49D2549C /* Pods_DStackExample.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3D3B3F7D1F66C7A800788B78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D869AFD1F31E3AB00AB5F97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D869B041F31E3AB00AB5F97;
+			remoteInfo = DStackExample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3D3B3F781F66C7A800788B78 /* DStackExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DStackExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DStackExampleUITests.swift; sourceTree = "<group>"; };
+		3D3B3F7C1F66C7A800788B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D41A0431F4C428C00C10118 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		3D6C7BCD1F5D688000A97934 /* DStack.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DStack.podspec; path = ../../DStack.podspec; sourceTree = "<group>"; };
 		3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +62,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3D3B3F751F66C7A800788B78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3D869B021F31E3AB00AB5F97 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,10 +80,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D3B3F791F66C7A800788B78 /* DStackExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */,
+				3D3B3F7C1F66C7A800788B78 /* Info.plist */,
+			);
+			path = DStackExampleUITests;
+			sourceTree = "<group>";
+		};
 		3D869AFC1F31E3AB00AB5F97 = {
 			isa = PBXGroup;
 			children = (
 				3D869B071F31E3AB00AB5F97 /* Sources */,
+				3D3B3F791F66C7A800788B78 /* DStackExampleUITests */,
 				3D869B061F31E3AB00AB5F97 /* Products */,
 				54860E0B1203D54E4379307C /* Pods */,
 				DE7F6609B5B0F5056F5EBE3E /* Frameworks */,
@@ -73,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3D869B051F31E3AB00AB5F97 /* DStackExample.app */,
+				3D3B3F781F66C7A800788B78 /* DStackExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +168,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3D3B3F771F66C7A800788B78 /* DStackExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D3B3F811F66C7A800788B78 /* Build configuration list for PBXNativeTarget "DStackExampleUITests" */;
+			buildPhases = (
+				3D3B3F741F66C7A800788B78 /* Sources */,
+				3D3B3F751F66C7A800788B78 /* Frameworks */,
+				3D3B3F761F66C7A800788B78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D3B3F7E1F66C7A800788B78 /* PBXTargetDependency */,
+			);
+			name = DStackExampleUITests;
+			productName = DStackExampleUITests;
+			productReference = 3D3B3F781F66C7A800788B78 /* DStackExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		3D869B041F31E3AB00AB5F97 /* DStackExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D869B171F31E3AB00AB5F97 /* Build configuration list for PBXNativeTarget "DStackExample" */;
@@ -167,9 +217,17 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = erusaevap;
 				TargetAttributes = {
+					3D3B3F771F66C7A800788B78 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 33NFP6R65P;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3D869B041F31E3AB00AB5F97;
+					};
 					3D869B041F31E3AB00AB5F97 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 33NFP6R65P;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -188,11 +246,19 @@
 			projectRoot = "";
 			targets = (
 				3D869B041F31E3AB00AB5F97 /* DStackExample */,
+				3D3B3F771F66C7A800788B78 /* DStackExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3D3B3F761F66C7A800788B78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3D869B031F31E3AB00AB5F97 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,6 +343,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3D3B3F741F66C7A800788B78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B3F7B1F66C7A800788B78 /* DStackExampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3D869B011F31E3AB00AB5F97 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,6 +372,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3D3B3F7E1F66C7A800788B78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D869B041F31E3AB00AB5F97 /* DStackExample */;
+			targetProxy = 3D3B3F7D1F66C7A800788B78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		3D869B111F31E3AB00AB5F97 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -310,6 +392,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3D3B3F7F1F66C7A800788B78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 33NFP6R65P;
+				INFOPLIST_FILE = DStackExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.erusaevap.DStackExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = DStackExample;
+			};
+			name = Debug;
+		};
+		3D3B3F801F66C7A800788B78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 33NFP6R65P;
+				INFOPLIST_FILE = DStackExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.erusaevap.DStackExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = DStackExample;
+			};
+			name = Release;
+		};
 		3D869B151F31E3AB00AB5F97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -414,7 +524,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erusaevap.DStackExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -429,13 +540,23 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erusaevap.DStackExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3D3B3F811F66C7A800788B78 /* Build configuration list for PBXNativeTarget "DStackExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D3B3F7F1F66C7A800788B78 /* Debug */,
+				3D3B3F801F66C7A800788B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3D869B001F31E3AB00AB5F97 /* Build configuration list for PBXProject "DStackExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

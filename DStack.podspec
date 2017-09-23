@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "DStack"
-    s.version       = "0.0.20"
+    s.version       = "0.1.0"
     s.summary       = "Helpers"
     s.description   = "Helpers for views"
     s.homepage      = "https://github.com/ErusaevAP/DStack"
@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
 
     s.platform      = :ios, "10.0"
     s.source        = { :git => "https://github.com/erusaevap/DStack.git", :tag => "#{s.version}" }
-
 
     # s.resource    = "icon.png"
     # s.resources   = "Resources/*.png"
