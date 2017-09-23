@@ -9,6 +9,7 @@
 import DStack
 import UIKit
 
+@objcMembers
 class TabsViewController: DStack.TabsViewController<HeaderView> {
 
     // MARK: Initialization

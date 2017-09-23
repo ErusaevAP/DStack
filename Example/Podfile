@@ -11,5 +11,7 @@ target 'DStackExample' do
         :subspecs => ['Controllers'],
         :path => '..'
     pod 'SwiftLint'
+    pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift.git', :tag => 'rxswift4.0-swift4.0'
+    pod 'RxCocoa', '4.0.0-beta.0'
 
 end

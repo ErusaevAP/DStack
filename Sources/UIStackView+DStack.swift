@@ -11,12 +11,6 @@ import UIKit
 public
 extension UIStackView {
 
-    @discardableResult override
-    func add(inRootView rootView: UIView) -> Self {
-        super.add(inRootView: rootView)
-        return self
-    }
-
     @discardableResult
     func add(arrangedSubviews subviews: UIView...) -> Self {
         add(arrangedSubviews: subviews)
