@@ -297,17 +297,17 @@ class TabsViewController<HeaderView: UIView>:
         disposeBag = DisposeBag()
         scrollView.rx.willBeginDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
             flexibleHeader?.willBeginDragging(scrollOffset: scrollView?.contentOffset ?? .zero)
-        }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
 
         scrollView.rx.didEndDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
             let velocity = scrollView?.panGestureRecognizer.translation(in: scrollView?.superview)
             flexibleHeader?.didEndDragging(velocity: velocity ?? .zero)
-        }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
 
         scrollView.rx.contentOffset.skip(1).subscribe { [weak flexibleHeader] in
             guard let scrollOffset = $0.element else { return }
             flexibleHeader?.scrollOffset = scrollOffset
-        }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
     }
 
     private
