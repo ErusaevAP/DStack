@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "DStack"
-    s.version       = "0.1.1"
+    s.version       = "0.1.2"
     s.summary       = "Helpers"
     s.description   = "Helpers for views"
     s.homepage      = "https://github.com/ErusaevAP/DStack"

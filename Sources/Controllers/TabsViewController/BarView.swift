@@ -199,8 +199,8 @@ class TabsBarView: UIView, TabsBar {
             .setCenter()
             .setTopAlignment()
             .setBottomAlignment()
-            .setLeadingAnchor(greaterThanOrEqualTo: leadingAnchor, priority: UILayoutPriority(rawValue: 250))
-            .setTrailingAnchor(greaterThanOrEqualTo: trailingAnchor, priority: UILayoutPriority(rawValue: 250))
+            .setLeadingAnchor(greaterThanOrEqualTo: leadingAnchor, priority: UILayoutPriority.defaultLow)
+            .setTrailingAnchor(greaterThanOrEqualTo: trailingAnchor, priority: UILayoutPriority.defaultLow)
 
         selectorView
             .add(inRootView: scrollView)
