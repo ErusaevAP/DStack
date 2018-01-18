@@ -46,5 +46,5 @@ class TabsViewController: DSTabsViewController<HeaderView> {
 ```
 ### Demo
 
-![ScreenShotPortrait](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Videos/DSStackDemo.mov)
+[![Watch the Demo](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/DSTabsViewController.png)](https://youtu.be/w2z89Qp6E2k)
 
