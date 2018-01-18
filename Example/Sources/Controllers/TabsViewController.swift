@@ -10,7 +10,18 @@ import DStack
 import UIKit
 
 @objcMembers
-class TabsViewController: DStack.TabsViewController<HeaderView> {
+class TabsViewController: DSTabsViewController<HeaderView> {
+
+    // MARK: Properties
+
+    private
+    let ctrl2 = Example2ViewController()
+
+    private
+    let ctrl3 = Example3ViewController()
+
+    private
+    let ctrl4 = CollectionViewController()
 
     // MARK: Initialization
 
@@ -28,48 +39,41 @@ class TabsViewController: DStack.TabsViewController<HeaderView> {
 
     // MARK: Overrided Methods
 
-    override func viewDidLoad() {
+    override
+    func viewDidLoad() {
         super.viewDidLoad()
 
-        viewControllers = [ctrl4, ctrl1]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "2",
-            style: .done,
-            target: self,
-            action: #selector(tap2)
-        )
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "4",
-            style: .done,
-            target: self,
-            action: #selector(tap4)
-        )
-    }
-
-    override
-    func buildTabsBarView() -> UIView? {
-        return TabsBarView()
+        view.backgroundColor = .white
+        viewControllers = [ctrl4, ctrl2]
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(
+                title: "2 tabs",
+                style: .done,
+                target: self,
+                action: #selector(on2Tapped)
+            ),
+            UIBarButtonItem(
+                title: "3 tabs",
+                style: .done,
+                target: self,
+                action: #selector(on3Tapped)
+            )
+        ]
     }
 
     // MARK: Actions
 
-    private let ctrl1 = Example1ViewController()
-    private let ctrl2 = Example2ViewController()
-    private let ctrl3 = Example3ViewController()
-    private let ctrl4 = CollectionViewController()
-
     @objc private
-    func tap2() {
+    func on2Tapped() {
         viewControllers = [
             ctrl4,
-            ctrl1
+            ctrl2
         ]
     }
 
     @objc private
-    func tap4() {
+    func on3Tapped() {
         viewControllers = [
-            ctrl1,
             ctrl2,
             ctrl3,
             ctrl4

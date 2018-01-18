@@ -13,7 +13,7 @@ import UIKit
 // MARK: -
 
 public
-protocol TabsBar: class {
+protocol DSTabsBar: class {
 
     var tappedOnTab: ((Int) -> Void)? { get set }
 
@@ -28,7 +28,7 @@ protocol TabsBar: class {
 // MARK: -
 
 open
-class TabsBarView: UIView, TabsBar {
+class DSTabsBarView: UIView, DSTabsBar {
 
     // MARK: Properties
 

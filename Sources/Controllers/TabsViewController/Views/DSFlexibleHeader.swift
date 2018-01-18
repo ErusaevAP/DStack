@@ -1,5 +1,5 @@
 //
-//  FlexibleHeader.swift
+//  DSFlexibleHeader.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/23/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 open
-class FlexibleHeader: UIView {
+class DSFlexibleHeader: UIView {
 
     // MARK: Properties
 
@@ -38,7 +38,7 @@ class FlexibleHeader: UIView {
         }
     }
 
-    private
+    open
     var heightConstraint: NSLayoutConstraint?
 
     private

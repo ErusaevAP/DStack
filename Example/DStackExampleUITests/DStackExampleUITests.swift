@@ -10,13 +10,15 @@ import XCTest
 
 class DStackExampleUITests: XCTestCase {
 
-    override func setUp() {
+    override
+    func setUp() {
         super.setUp()
         continueAfterFailure = false
         XCUIApplication().launch()
     }
 
-    override func tearDown() {
+    override
+    func tearDown() {
         super.tearDown()
     }
 

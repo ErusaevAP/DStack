@@ -1,5 +1,5 @@
 //
-//  ContainerCell.swift
+//  DSContainerCell.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/21/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContainerCell: UICollectionViewCell {
+class DSContainerCell: UICollectionViewCell {
 
     // MARK: Properties
 

@@ -9,7 +9,7 @@
 import DStack
 import UIKit
 
-class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView> {
+class TabsWithHeaderViewController: DSTabsViewController<HeaderView> {
 
     // MARK: Initialization
 
@@ -17,11 +17,9 @@ class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView> {
         super.init(
             headerView: HeaderView(),
             viewControllers: [
-                TabsViewController(),
                 CollectionViewController(),
                 CollectionViewControllerSmall(),
-                Example1ViewController(),
-                Example2ViewController()
+                TabsViewController()
             ]
         )
         title = "Tabs + Header"
@@ -32,11 +30,27 @@ class TabsWithHeaderViewController: DStack.TabsViewController<HeaderView> {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Overrided Methods
+    // MARK: Life Cycle
 
     override
-    func buildTabsBarView() -> UIView? {
-        return TabsBarView()
+    func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = "TabsViewController + Header"
+    }
+
+    public
+    override
+    func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.dsNavigationBar?.pushState(barState: .clear)
+    }
+
+    public
+    override
+    func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.dsNavigationBar?.popState()
     }
 
 }

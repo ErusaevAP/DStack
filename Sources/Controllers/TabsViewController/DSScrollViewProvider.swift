@@ -1,5 +1,5 @@
 //
-//  ScrollViewProvider.swift
+//  DSScrollViewProvider.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/21/17.
@@ -11,7 +11,7 @@ import UIKit
 // MARK: -
 
 public
-protocol ScrollViewProvider: class {
+protocol DSScrollViewProvider: class {
 
     var scrollView: UIScrollView? { get }
 
@@ -19,7 +19,7 @@ protocol ScrollViewProvider: class {
 
 // MARK: -
 
-extension UICollectionViewController: ScrollViewProvider {
+extension UICollectionViewController: DSScrollViewProvider {
 
     public
     var scrollView: UIScrollView? {
@@ -30,7 +30,7 @@ extension UICollectionViewController: ScrollViewProvider {
 
 // MARK: -
 
-extension UITableViewController: ScrollViewProvider {
+extension UITableViewController: DSScrollViewProvider {
 
     public
     var scrollView: UIScrollView? {

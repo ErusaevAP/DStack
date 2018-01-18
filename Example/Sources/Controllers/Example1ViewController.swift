@@ -9,35 +9,7 @@
 import UIKit
 import DStack
 
-class Example1ViewController: UIViewController {
-
-    // MARK: Properties
-
-    private
-    let makeLabel = { (title: String) -> UILabel in
-        let label = UILabel()
-        label.backgroundColor = .red
-        label.text = title
-        label.textAlignment = .center
-        return label
-    }
-
-    // MARK: Subviews
-
-    private lazy
-    var label1: UILabel = self.makeLabel("1")
-
-    private lazy
-    var label2: UILabel = self.makeLabel("2")
-
-    private lazy
-    var label3: UILabel = self.makeLabel("3")
-
-    private lazy
-    var label4: UILabel = self.makeLabel("4")
-
-    private lazy
-    var label5: UILabel = self.makeLabel("5")
+class Example1ViewController: UITableViewController {
 
     // MARK: Life Cycle
 
@@ -46,46 +18,50 @@ class Example1ViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.tableFooterView = UIView()
+    }
 
-        let stackView = UIStackView()
-            .add(inRootView: view)
-            .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor, marge: 10)
-            .setRightAnchor(equalTo: view.rightAnchor, marge: 10)
-            .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor, marge: 10)
-            .setLeftAnchor(equalTo: view.leftAnchor, marge: 10)
+    // MARK: UITableViewDataSource
 
-        let side: CGFloat = 70
+    override
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
 
-        label1.add(inRootView: stackView)
-            .setSize(width: side, height: side)
-            .setTopAlignment()
-            .setCenterX()
+    override
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "TabsViewController + HeaderView"
+        case 1:
+            cell.textLabel?.text = "TabsViewController"
+        default:
+            break
+        }
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
 
-        label2.add(inRootView: stackView)
-            .setSize(width: side, height: side)
-            .setRightAlignment()
-            .setCenterY()
-
-        label3.add(inRootView: stackView)
-            .setSize(width: side, height: side)
-            .setBottomAlignment()
-            .setCenterX()
-
-        label4.add(inRootView: stackView)
-            .setSize(width: side, height: side)
-            .setLeftAlignment()
-            .setCenterY()
-
-        label5.add(inRootView: stackView)
-            .setSize(width: side, height: side)
-            .setCenter()
+    override
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            show(TabsWithHeaderViewController(), sender: nil)
+        case 1:
+            show(TabsViewController(), sender: nil)
+        default:
+            break
+        }
     }
 
     // MARK: Initialization
 
     init() {
-        super.init(nibName: nil, bundle: nil)
-        title = "Example"
+        super.init(style: .plain)
+        title = "Example 1"
     }
 
     required

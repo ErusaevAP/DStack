@@ -9,9 +9,31 @@
 import DStack
 import UIKit
 
-class HeaderView: FlexibleHeader {
+class HeaderView: DSFlexibleHeader {
 
     // MARK: Properties
+
+    override
+    var maxHeight: CGFloat {
+        return button.isSelected ? 160 : 260
+    }
+
+    override
+    var minHeight: CGFloat {
+        return 120
+    }
+
+    private
+    let button: UIButton = {
+        let bt = UIButton()
+        bt.setTitle("Big Header", for: .normal)
+        bt.setTitle("Small Header", for: .selected)
+        bt.backgroundColor = .red
+        bt.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
+        return bt
+    }()
+
+    // MARK: Suviews
 
     private lazy
     var miniHeader: UILabel = {
@@ -24,20 +46,12 @@ class HeaderView: FlexibleHeader {
 
     private
     let backgroundImageView: UIImageView = {
-        let v = UIImageView(image: UIImage(named: "header_image"))
+        let image = UIImage(named: "header_image")
+        let v = UIImageView(image: image)
         v.contentMode = .scaleAspectFill
+        v.clipsToBounds = true
         return v
     }()
-
-    override
-    var maxHeight: CGFloat {
-        return 120
-    }
-
-    override
-    var minHeight: CGFloat {
-        return 44
-    }
 
     // MARK: Initialization
 
@@ -48,12 +62,16 @@ class HeaderView: FlexibleHeader {
         backgroundImageView
             .add(inRootView: self)
             .fill()
-
         miniHeader
             .add(inRootView: self)
-            .setWidth()
-            .setSize(height: minHeight)
-            .setTopAlignment()
+            .setSize(width: 140, height: 20)
+            .setBottomAlignment(marge: 10)
+            .setCenterX()
+        button
+            .add(inRootView: self)
+            .setSize(width: 140, height: 20)
+            .setCenterX()
+            .setBottomAlignment(marge: 10)
     }
 
     required
@@ -69,7 +87,18 @@ class HeaderView: FlexibleHeader {
 
         let alpha = (frame.size.height - minHeight) / (maxHeight - minHeight)
         backgroundImageView.alpha = alpha
+        button.alpha = alpha
         miniHeader.alpha = 1 - alpha
+    }
+
+    // MARK: Action
+
+    @objc func buttonTap() {
+        button.isSelected = !button.isSelected
+        heightConstraint?.constant = maxHeight
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.superview?.layoutIfNeeded()
+        }
     }
 
 }

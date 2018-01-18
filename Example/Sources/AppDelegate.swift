@@ -18,11 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     ) -> Bool {
 
+        configureAppearances()
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = RootViewController()
         window?.makeKeyAndVisible()
 
         return true
+    }
+
+    private
+    func configureAppearances() {
+        UITabBar.appearance().tintColor = .red
+        UINavigationBar.appearance().tintColor = .red
     }
 
 }

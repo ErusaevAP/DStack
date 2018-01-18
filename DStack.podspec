@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "DStack"
-    s.version       = "0.1.2"
+    s.version       = "0.2.0"
     s.summary       = "Helpers"
     s.description   = "Helpers for views"
     s.homepage      = "https://github.com/ErusaevAP/DStack"
@@ -22,6 +22,11 @@ Pod::Spec.new do |s|
 
     s.subspec 'Core' do |core|
         core.source_files  = 'Sources/*.{swift}'
+    end
+
+    s.subspec 'Views' do |views|
+        views.source_files   = 'Sources/Views/*.{swift}'
+        views.dependency 'DStack/Core'
     end
 
     s.subspec 'Controllers' do |controllers|

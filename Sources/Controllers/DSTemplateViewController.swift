@@ -1,5 +1,5 @@
 //
-//  TemplateViewController.swift
+//  DSTemplateViewController.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 open
-class TemplateViewController<View: UIView>: UIViewController {
+class DSTemplateViewController<View: UIView>: UIViewController {
 
     // MARK: Properties
 

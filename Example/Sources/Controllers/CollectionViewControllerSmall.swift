@@ -12,6 +12,8 @@ import RxSwift
 
 class CollectionViewControllerSmall: UICollectionViewController {
 
+    // MARK: Properties
+
     private
     lazy var refreshControl: UIRefreshControl = {
         let r = UIRefreshControl()

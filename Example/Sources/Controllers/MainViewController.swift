@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DStack
 
 // MARK: -
 
@@ -19,8 +20,6 @@ class MainViewController: UITabBarController {
 
         setViewControllers(
             [
-                TabsWithHeaderViewController().navigationController,
-                TabsViewController().navigationController,
                 Example1ViewController().navigationController,
                 Example2ViewController().navigationController,
                 Example3ViewController().navigationController
@@ -42,7 +41,9 @@ private
 extension UIViewController {
 
     var navigationController: UINavigationController {
-        return UINavigationController(rootViewController: self)
+        let navigationCtrl =  UINavigationController(navigationBarClass: DSNavigationBar.self, toolbarClass: nil)
+        navigationCtrl.pushViewController(self, animated: false)
+        return navigationCtrl
     }
 
 }

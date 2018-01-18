@@ -1,5 +1,5 @@
 //
-//  TabsViewController.swift
+//  DSTabsViewController.swift
 //  Pods
 //
 //  Created by Andrei Erusaev on 8/17/17.
@@ -14,7 +14,7 @@ import RxCocoa
 // MARK: -
 
 public
-protocol ContentDeferredLoading: class {
+protocol DSContentDeferredLoading: class {
 
     var contentLoaded: ((UIViewController) -> Void)? { get set }
 
@@ -23,7 +23,7 @@ protocol ContentDeferredLoading: class {
 // MARK: -
 
 open
-class TabsViewController<HeaderView: UIView>:
+class DSTabsViewController<HeaderView: UIView>:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
@@ -79,8 +79,8 @@ class TabsViewController<HeaderView: UIView>:
     var tabsBarView: UIView?
 
     public
-    var tabsBar: TabsBar? {
-        return tabsBarView as? TabsBar
+    var tabsBar: DSTabsBar? {
+        return tabsBarView as? DSTabsBar
     }
 
     private
@@ -99,33 +99,33 @@ class TabsViewController<HeaderView: UIView>:
         v.delegate = self
         v.showsHorizontalScrollIndicator = false
         v.backgroundColor = .white
-        v.register(ContainerCell.self, forCellWithReuseIdentifier: ContainerCell.reuseIdentifier)
+        v.register(DSContainerCell.self, forCellWithReuseIdentifier: DSContainerCell.reuseIdentifier)
         return v
     }()
 
     private(set)
     var selectedViewController: UIViewController? {
         didSet {
-            var flexibleHeader: FlexibleHeader? = headerView as? FlexibleHeader
+            var flexibleHeader: DSFlexibleHeader? = headerView as? DSFlexibleHeader
             var parenVC: UIViewController? = self
 
             while parenVC != nil {
                 if
-                    let topTabsViewController = parenVC as? TabsViewController,
-                    let header = topTabsViewController.headerView as? FlexibleHeader
+                    let topTabsViewController = parenVC as? DSTabsViewController,
+                    let header = topTabsViewController.headerView as? DSFlexibleHeader
                 {
                     flexibleHeader = header
                 }
                 parenVC = parenVC?.parent
             }
 
-            if let deferredController = selectedViewController as? ContentDeferredLoading {
+            if let deferredController = selectedViewController as? DSContentDeferredLoading {
                 deferredController.contentLoaded = { [weak self, weak flexibleHeader] ctrl in
-                    if let scrollViewProvider = ctrl as? ScrollViewProvider {
+                    if let scrollViewProvider = ctrl as? DSScrollViewProvider {
                         self?.connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
                     }
                 }
-            } else if let scrollViewProvider = selectedViewController as? ScrollViewProvider {
+            } else if let scrollViewProvider = selectedViewController as? DSScrollViewProvider {
                 connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
             }
         }
@@ -213,7 +213,7 @@ class TabsViewController<HeaderView: UIView>:
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(
-            withReuseIdentifier: ContainerCell.reuseIdentifier,
+            withReuseIdentifier: DSContainerCell.reuseIdentifier,
             for: indexPath
         )
     }
@@ -226,7 +226,7 @@ class TabsViewController<HeaderView: UIView>:
     ) {
         let controller = viewControllers[indexPath.item]
         addChildViewController(controller)
-        (cell as? ContainerCell)?.model = controller
+        (cell as? DSContainerCell)?.model = controller
         controller.didMove(toParentViewController: self)
 
         if selectedViewController == nil {
@@ -240,7 +240,7 @@ class TabsViewController<HeaderView: UIView>:
         didEndDisplaying cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        guard let cell = (cell as? ContainerCell), let controller = cell.model else { return }
+        guard let cell = (cell as? DSContainerCell), let controller = cell.model else { return }
         controller.willMove(toParentViewController: nil)
         cell.model = nil
         controller.removeFromParentViewController()
@@ -285,14 +285,13 @@ class TabsViewController<HeaderView: UIView>:
 
     open
     func buildTabsBarView() -> UIView? {
-        assertionFailure("This method should be overridden")
-        return nil
+        return DSTabsBarView()
     }
 
     // MARK: Private Methods
 
     private
-    func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: FlexibleHeader?) {
+    func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: DSFlexibleHeader?) {
         guard let scrollView = scrollView, let flexibleHeader = flexibleHeader  else { return }
         disposeBag = DisposeBag()
         scrollView.rx.willBeginDragging.subscribe { [weak flexibleHeader, weak scrollView] _ in
@@ -324,7 +323,7 @@ class TabsViewController<HeaderView: UIView>:
             headerView
                 .add(inRootView: view)
                 .setHeightAnchor(equalTo: headerView.heightAnchor)
-                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setTopAnchor(equalTo: topLayoutGuide.topAnchor)
                 .setLeftAnchor(equalTo: view.leftAnchor)
                 .setRightAnchor(equalTo: view.rightAnchor)
             containerView

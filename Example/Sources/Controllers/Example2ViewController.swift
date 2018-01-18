@@ -51,7 +51,7 @@ class Example2ViewController: UIViewController {
 
         label1.add(inRootView: view)
             .setSize(width: side, height: side)
-            .setTopAlignment()
+            .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
             .setCenterX()
 
         label2.add(inRootView: view)
@@ -61,7 +61,7 @@ class Example2ViewController: UIViewController {
 
         label3.add(inRootView: view)
             .setSize(width: side, height: side)
-            .setBottomAlignment()
+            .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
             .setCenterX()
 
         label4.add(inRootView: view)
@@ -78,7 +78,7 @@ class Example2ViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Example Example"
+        title = "Example 2"
     }
 
     required

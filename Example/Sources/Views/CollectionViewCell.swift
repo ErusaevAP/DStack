@@ -16,6 +16,8 @@ class CollectionViewCell: UICollectionViewCell {
     static
     let reuseIdentifier = "CollectionViewCell"
 
+    // MARK: Subviews
+
     private
     let label = UILabel()
 
