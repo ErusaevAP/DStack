@@ -1,8 +1,7 @@
 # DStack
 
-Tools for working with views
 
-# Example
+## Extensions for working with constraints
 
 ```swift
 let stackView = UIStackView()
@@ -18,31 +17,34 @@ label1.addInRootView(stackView)
 .setSize(width: side, height: side)
 .setTopAlignment()
 .setCenterX()
-
-label2.addInRootView(stackView)
-.setSize(width: side, height: side)
-.setRightAlignment()
-.setCenterY()
-
-label3.addInRootView(stackView)
-.setSize(width: side, height: side)
-.setBottomAlignment()
-.setCenterX()
-
-label4.addInRootView(stackView)
-.setSize(width: side, height: side)
-.setLeftAlignment()
-.setCenterY()
-
-label5.addInRootView(stackView)
-.setSize(width: side, height: side)
-.setCenter()
 ```
 
-## Landscape
-
-![ScreenShotLandscape](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/ScreenShotLandscape.png)
-
-## Portrait
+### Demo
 
 ![ScreenShotPortrait](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/ScreenShotPortrait.png)
+
+## DSTabsViewController
+
+```swift
+class TabsViewController: DSTabsViewController<HeaderView> {
+
+    // MARK: Initialization
+
+    init() {
+        super.init(viewControllers: [
+            UIViewController(),
+            UIViewController()
+        ])
+    }
+
+    required
+    init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+```
+### Demo
+
+![ScreenShotPortrait](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Videos/DSStackDemo.mov)
+
