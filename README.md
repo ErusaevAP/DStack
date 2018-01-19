@@ -5,19 +5,19 @@
 ```swift
 class TabsViewController: DSTabsViewController<HeaderView> {
 
-// MARK: Initialization
+ // MARK: Initialization
 
-init() {
-super.init(viewControllers: [
-UIViewController(),
-UIViewController()
-])
-}
+ init() {
+  super.init(viewControllers: [
+   UIViewController(),
+   UIViewController()
+  ])
+ }
 
-required
-init?(coder aDecoder: NSCoder) {
-fatalError("init(coder:) has not been implemented")
-}
+ required
+ init?(coder aDecoder: NSCoder) {
+  fatalError("init(coder:) has not been implemented")
+ }
 
 }
 ```
@@ -29,18 +29,18 @@ fatalError("init(coder:) has not been implemented")
 
 ```swift
 let stackView = UIStackView()
-.addInRootView(view)
-.setTopAnchor(anchor: topLayoutGuide.bottomAnchor, marge: 10)
-.setRightAnchor(anchor: view.rightAnchor, marge: 10)
-.setBottomAnchor(anchor: bottomLayoutGuide.topAnchor, marge: 10)
-.setLeftAnchor(anchor: view.leftAnchor, marge: 10)
+ .addInRootView(view)
+ .setTopAnchor(anchor: topLayoutGuide.bottomAnchor, marge: 10)
+ .setRightAnchor(anchor: view.rightAnchor, marge: 10)
+ .setBottomAnchor(anchor: bottomLayoutGuide.topAnchor, marge: 10)
+ .setLeftAnchor(anchor: view.leftAnchor, marge: 10)
 
 let side: CGFloat = 70
 
 label1.addInRootView(stackView)
-.setSize(width: side, height: side)
-.setTopAlignment()
-.setCenterX()
+ .setSize(width: side, height: side)
+ .setTopAlignment()
+ .setCenterX()
 ```
 
 ### Demo
