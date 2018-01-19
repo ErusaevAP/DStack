@@ -1,5 +1,29 @@
 # DStack
 
+## DSTabsViewController
+
+```swift
+class TabsViewController: DSTabsViewController<HeaderView> {
+
+// MARK: Initialization
+
+init() {
+super.init(viewControllers: [
+UIViewController(),
+UIViewController()
+])
+}
+
+required
+init?(coder aDecoder: NSCoder) {
+fatalError("init(coder:) has not been implemented")
+}
+
+}
+```
+### Demo (Click for watching)
+
+[![Watch the Demo](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/DSTabsViewController.png)](https://youtu.be/w2z89Qp6E2k)
 
 ## Extensions for working with constraints
 
@@ -22,29 +46,3 @@ label1.addInRootView(stackView)
 ### Demo
 
 ![ScreenShotPortrait](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/ScreenShotPortrait.png)
-
-## DSTabsViewController
-
-```swift
-class TabsViewController: DSTabsViewController<HeaderView> {
-
-    // MARK: Initialization
-
-    init() {
-        super.init(viewControllers: [
-            UIViewController(),
-            UIViewController()
-        ])
-    }
-
-    required
-    init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-}
-```
-### Demo (Click for watching)
-
-[![Watch the Demo](https://github.com/ErusaevAP/DStack/blob/master/Documentations/Images/DSTabsViewController.png)](https://youtu.be/w2z89Qp6E2k)
-
