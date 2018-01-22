@@ -13,7 +13,7 @@ import UIKit
 public
 protocol DSScrollViewProvider: class {
 
-    var scrollView: UIScrollView? { get }
+    var dsScrollView: UIScrollView? { get }
 
 }
 
@@ -22,7 +22,7 @@ protocol DSScrollViewProvider: class {
 extension UICollectionViewController: DSScrollViewProvider {
 
     public
-    var scrollView: UIScrollView? {
+    var dsScrollView: UIScrollView? {
         return collectionView
     }
 
@@ -33,7 +33,7 @@ extension UICollectionViewController: DSScrollViewProvider {
 extension UITableViewController: DSScrollViewProvider {
 
     public
-    var scrollView: UIScrollView? {
+    var dsScrollView: UIScrollView? {
         return tableView
     }
 

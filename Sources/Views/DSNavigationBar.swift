@@ -22,7 +22,9 @@ class DSNavigationBarSatate {
             backgroundImage: UIImage(),
             shadowImage: UIImage(),
             isTranslucent: true,
-            backgroundColor: .clear
+            backgroundColor: .clear,
+            tintColor: .white,
+            barStyle: .black
         )
     }
 
@@ -35,6 +37,8 @@ class DSNavigationBarSatate {
     let backgroundColor: UIColor?
 
     let barStyle: UIBarStyle
+    
+    let tintColor: UIColor?
 
     // MARK: Initialization
 
@@ -44,11 +48,13 @@ class DSNavigationBarSatate {
         shadowImage: UIImage? = nil,
         isTranslucent: Bool = false,
         backgroundColor: UIColor? = nil,
+        tintColor: UIColor? = nil,
         barStyle: UIBarStyle = .default) {
         self.backgroundImage = backgroundImage
         self.shadowImage = shadowImage
         self.isTranslucent = isTranslucent
         self.backgroundColor = backgroundColor
+        self.tintColor = tintColor
         self.barStyle = barStyle
     }
 
@@ -89,11 +95,14 @@ class DSNavigationBar: UINavigationBar {
 
     public
     func popState() {
-        if barStates.count <= 1 { return }
-        barStates.removeLast()
-        if let lastBarState = barStates.last {
-            applayBarState(barState: lastBarState)
+        guard barStates.count > 1 else {
+            return
         }
+        barStates.removeLast()
+        guard let lastBarState = barStates.last else {
+            return
+        }
+        applayBarState(barState: lastBarState)
     }
 
     // MARK: Private Methods
@@ -104,7 +113,8 @@ class DSNavigationBar: UINavigationBar {
             backgroundImage: backIndicatorImage,
             shadowImage: shadowImage,
             isTranslucent: isTranslucent,
-            backgroundColor: backgroundColor
+            backgroundColor: backgroundColor,
+            tintColor: tintColor
         )
         pushState(barState: barState)
     }
@@ -116,6 +126,7 @@ class DSNavigationBar: UINavigationBar {
         isTranslucent = barState.isTranslucent
         backgroundColor = barState.backgroundColor
         barStyle = barState.barStyle
+        tintColor = barState.tintColor
     }
 
 }

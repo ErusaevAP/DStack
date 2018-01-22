@@ -74,21 +74,27 @@ class DSFlexibleHeader: UIView {
     public
     init() {
         super.init(frame: .zero)
-
-        heightConstraint = heightAnchor.constraint(equalToConstant: maxHeight)
-        heightConstraint?.priority = .required
-        heightConstraint?.isActive = true
+        setup()
     }
 
     public override
     init(frame: CGRect) {
-        super.init(frame: .zero)
-        fatalError("init(frame:) has not been implemented")
+        super.init(frame: frame)
+        setup()
     }
 
     public required
     init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
 
+    // MARK: Private Methods
+
+    private
+    func setup() {
+        heightConstraint = heightAnchor.constraint(equalToConstant: maxHeight)
+        heightConstraint?.priority = .required
+        heightConstraint?.isActive = true
+    }
 }

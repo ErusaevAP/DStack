@@ -93,12 +93,11 @@ class DSTabsViewController<HeaderView: UIView>:
     private lazy
     var containerView: UICollectionView = {
         let v = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
-        v.backgroundColor = .lightGray
+        v.backgroundColor = .clear
         v.isPagingEnabled = true
         v.dataSource = self
         v.delegate = self
         v.showsHorizontalScrollIndicator = false
-        v.backgroundColor = .white
         v.register(DSContainerCell.self, forCellWithReuseIdentifier: DSContainerCell.reuseIdentifier)
         return v
     }()
@@ -122,11 +121,11 @@ class DSTabsViewController<HeaderView: UIView>:
             if let deferredController = selectedViewController as? DSContentDeferredLoading {
                 deferredController.contentLoaded = { [weak self, weak flexibleHeader] ctrl in
                     if let scrollViewProvider = ctrl as? DSScrollViewProvider {
-                        self?.connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
+                        self?.connectScrollView(scrollViewProvider.dsScrollView, flexibleHeader: flexibleHeader)
                     }
                 }
             } else if let scrollViewProvider = selectedViewController as? DSScrollViewProvider {
-                connectScrollView(scrollViewProvider.scrollView, flexibleHeader: flexibleHeader)
+                connectScrollView(scrollViewProvider.dsScrollView, flexibleHeader: flexibleHeader)
             }
         }
     }

@@ -32,7 +32,7 @@ class DSContainerCell: UICollectionViewCell {
     init(frame: CGRect) {
         super.init(frame: .zero)
 
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .clear
     }
 
     required

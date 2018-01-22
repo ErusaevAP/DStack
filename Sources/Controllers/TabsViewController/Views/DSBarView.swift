@@ -110,17 +110,17 @@ class DSTabsBarView: UIView, DSTabsBar {
     private
     var stackView = UIStackView()
 
-    private
+    private lazy
     var selectorView: UIView = {
         let v = UIView()
-        v.backgroundColor = .red
+        v.backgroundColor = selectorLineColor
         return v
     }()
 
     private lazy
     var separatorView: UIView = {
         let v = UIView()
-        v.backgroundColor = self.separatorLineColor
+        v.backgroundColor = separatorLineColor
         return v
     }()
 
@@ -129,6 +129,7 @@ class DSTabsBarView: UIView, DSTabsBar {
         let s = UIScrollView()
         s.clipsToBounds = false
         s.showsHorizontalScrollIndicator = false
+        
         return s
     }()
 
