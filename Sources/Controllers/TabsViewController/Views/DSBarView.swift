@@ -66,9 +66,7 @@ class DSTabsBarView: UIView, DSTabsBar {
     }
 
     open
-    var height: CGFloat {
-        return 44
-    }
+    var height: CGFloat = 44
 
     private
     let titleFont: UIFont?
@@ -129,7 +127,6 @@ class DSTabsBarView: UIView, DSTabsBar {
         let s = UIScrollView()
         s.clipsToBounds = false
         s.showsHorizontalScrollIndicator = false
-        
         return s
     }()
 
