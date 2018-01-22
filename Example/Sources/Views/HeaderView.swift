@@ -48,7 +48,7 @@ class HeaderView: DSFlexibleHeader {
     let backgroundImageView: UIImageView = {
         let image = UIImage(named: "header_image")
         let v = UIImageView(image: image)
-        v.contentMode = .top
+        v.contentMode = .scaleAspectFill
         v.clipsToBounds = true
         return v
     }()
