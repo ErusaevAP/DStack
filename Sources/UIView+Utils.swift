@@ -27,3 +27,18 @@ extension UIView {
     }
 
 }
+
+public
+extension Array where Element == UIView {
+    
+    func stack(
+        axis: UILayoutConstraintAxis? = nil,
+        spacing: CGFloat? = nil,
+        alignment: UIStackViewAlignment? = nil,
+        distribution: UIStackViewDistribution? = nil
+    ) -> UIStackView {
+        return UIStackView(arrangedSubviews: self)
+            .set(axis: axis, spacing: spacing, alignment: alignment, distribution: distribution)
+    }
+    
+}
