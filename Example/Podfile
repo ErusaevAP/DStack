@@ -8,10 +8,8 @@ platform :ios, '10.0'
 target 'DStackExample' do
 
     pod 'DStack',
-        :subspecs => ['Controllers', 'Views'],
+        :subspecs => ['DSControllers', 'DSViews'],
         :path => '..'
     pod 'SwiftLint'
-    pod 'RxSwift'
-    pod 'RxCocoa'
 
 end

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03BA3D1E20110FE10012DA1B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03BA3D1D20110FE10012DA1B /* README.md */; };
 		3D3B3F7B1F66C7A800788B78 /* DStackExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */; };
 		3D41A0441F4C428C00C10118 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41A0431F4C428C00C10118 /* TabsViewController.swift */; };
 		3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */; };
@@ -37,12 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03BA3D1D20110FE10012DA1B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		3D3B3F781F66C7A800788B78 /* DStackExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DStackExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DStackExampleUITests.swift; sourceTree = "<group>"; };
 		3D3B3F7C1F66C7A800788B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D41A0431F4C428C00C10118 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
-		3D6C7BCD1F5D688000A97934 /* DStack.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DStack.podspec; path = ../../DStack.podspec; sourceTree = "<group>"; };
 		3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3D869B051F31E3AB00AB5F97 /* DStackExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DStackExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +111,6 @@
 		3D869B071F31E3AB00AB5F97 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				03BA3D1D20110FE10012DA1B /* README.md */,
-				3D6C7BCD1F5D688000A97934 /* DStack.podspec */,
 				3DA674E61F45C6A10097E294 /* Views */,
 				3D869B1F1F31F9D300AB5F97 /* Controllers */,
 				3D869B081F31E3AB00AB5F97 /* AppDelegate.swift */,
@@ -266,7 +261,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BA3D1E20110FE10012DA1B /* README.md in Resources */,
 				3D869B131F31E3AB00AB5F97 /* LaunchScreen.storyboard in Resources */,
 				3D869B101F31E3AB00AB5F97 /* Assets.xcassets in Resources */,
 			);

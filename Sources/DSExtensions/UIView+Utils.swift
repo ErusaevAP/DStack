@@ -6,8 +6,6 @@
 //
 //
 
-import UIKit
-
 public
 extension UIView {
 
@@ -30,7 +28,7 @@ extension UIView {
 
 public
 extension Array where Element == UIView {
-    
+
     func stack(
         axis: UILayoutConstraintAxis? = nil,
         spacing: CGFloat? = nil,
@@ -40,5 +38,5 @@ extension Array where Element == UIView {
         return UIStackView(arrangedSubviews: self)
             .set(axis: axis, spacing: spacing, alignment: alignment, distribution: distribution)
     }
-    
+
 }

@@ -1,11 +1,9 @@
 Pod::Spec.new do |s|
     s.name          = "DStack"
-    s.version       = "0.2.4"
+    s.version       = "0.3.0"
     s.summary       = "Helpers"
     s.description   = "Helpers for views"
     s.homepage      = "https://github.com/ErusaevAP/DStack"
-
-    # s.screenshots = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
     s.license       = "MIT"
     s.author        = { "Andrey Erusaev" => "erusaevap@gmail.com" }
@@ -13,25 +11,23 @@ Pod::Spec.new do |s|
     s.platform      = :ios, "10.0"
     s.source        = { :git => "https://github.com/erusaevap/DStack.git", :tag => "#{s.version}" }
 
-    # s.resource    = "icon.png"
-    # s.resources   = "Resources/*.png"
+    s.default_subspec = 'DSExtensions'
 
-    s.dependency "RxSwift"
-    s.dependency "RxCocoa"
-    s.default_subspec = 'Core'
-
-    s.subspec 'Core' do |core|
-        core.source_files  = 'Sources/*.{swift}'
+    s.subspec 'DSExtensions' do |extensions|
+        extensions.source_files  = 'Sources/DSExtensions/*.{swift}'
     end
 
-    s.subspec 'Views' do |views|
-        views.source_files   = 'Sources/Views/*.{swift}'
-        views.dependency 'DStack/Core'
+    s.subspec 'DSViews' do |views|
+        views.source_files   = 'Sources/DSViews/*.{swift}'
+        views.dependency 'DStack/DSExtensions'
     end
 
-    s.subspec 'Controllers' do |controllers|
-        controllers.source_files   = 'Sources/Controllers/**/*.{swift}'
-        controllers.dependency 'DStack/Core'
+    s.subspec 'DSControllers' do |controllers|
+        controllers.source_files   = 'Sources/DSControllers/**/*.{swift}'
+        controllers.dependency 'DStack/DSExtensions'
+        controllers.dependency "RxSwift", '~> 4.0'
+        controllers.dependency "RxCocoa", '~> 4.0'
+
     end
 
 end

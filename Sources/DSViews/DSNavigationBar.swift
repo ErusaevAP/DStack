@@ -6,8 +6,6 @@
 //  Copyright © 2018 erusaevap. All rights reserved.
 //
 
-import UIKit
-
 // MARK: -
 
 public
@@ -37,7 +35,7 @@ class DSNavigationBarSatate {
     let backgroundColor: UIColor?
 
     let barStyle: UIBarStyle
-    
+
     let tintColor: UIColor?
 
     // MARK: Initialization

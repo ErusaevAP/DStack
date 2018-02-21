@@ -6,8 +6,6 @@
 //  Copyright © 2017 erusaevap. All rights reserved.
 //
 
-import UIKit
-
 // MARK: - Size
 
 public
@@ -298,4 +296,3 @@ extension UIView {
     }
 
 }
-

@@ -6,8 +6,6 @@
 //  Copyright © 2017 erusaevap. All rights reserved.
 //
 
-import UIKit
-
 public
 extension UIStackView {
 

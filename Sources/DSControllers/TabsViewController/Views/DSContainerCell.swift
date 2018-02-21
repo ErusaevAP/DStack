@@ -6,8 +6,6 @@
 //
 //
 
-import UIKit
-
 class DSContainerCell: UICollectionViewCell {
 
     // MARK: Properties
