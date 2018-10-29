@@ -6,10 +6,10 @@ PODS:
   - DStack/DSExtensions (0.3.0)
   - DStack/DSViews (0.3.0):
     - DStack/DSExtensions
-  - RxCocoa (4.1.1):
+  - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.1)
-  - SwiftLint (0.24.2)
+  - RxSwift (4.3.1)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - DStack/DSControllers (from `..`)
@@ -28,9 +28,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   DStack: 5f813a04e4d717a1da9865a6785cb7d04c64aba1
-  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
-  RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
-  SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
 PODFILE CHECKSUM: 6325110f71b1f28cbc4462b6e4024d0e54140f7a
 
