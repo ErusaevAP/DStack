@@ -16,9 +16,15 @@ DEPENDENCIES:
   - DStack/DSViews (from `..`)
   - SwiftLint
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RxCocoa
+    - RxSwift
+    - SwiftLint
+
 EXTERNAL SOURCES:
   DStack:
-    :path: ..
+    :path: ".."
 
 SPEC CHECKSUMS:
   DStack: 5f813a04e4d717a1da9865a6785cb7d04c64aba1
@@ -28,4 +34,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6325110f71b1f28cbc4462b6e4024d0e54140f7a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

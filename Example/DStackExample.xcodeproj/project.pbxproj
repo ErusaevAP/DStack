@@ -197,7 +197,6 @@
 				3D869B021F31E3AB00AB5F97 /* Frameworks */,
 				3D869B031F31E3AB00AB5F97 /* Resources */,
 				BBAC83D67828E4F195E1BAB9 /* [CP] Embed Pods Frameworks */,
-				51679A96EDDFB37A8119CF13 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,21 +284,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint lint --path \"../\" --config \"${SRCROOT}/.swiftlint.yml\"";
-		};
-		51679A96EDDFB37A8119CF13 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DStackExample/Pods-DStackExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		5B629E696ABD78EFD3AB3E09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
