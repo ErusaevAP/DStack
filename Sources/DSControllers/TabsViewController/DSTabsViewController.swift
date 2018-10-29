@@ -224,9 +224,9 @@ class DSTabsViewController<HeaderView: UIView>:
         forItemAt indexPath: IndexPath
     ) {
         let controller = viewControllers[indexPath.item]
-        addChildViewController(controller)
+        addChild(controller)
         (cell as? DSContainerCell)?.model = controller
-        controller.didMove(toParentViewController: self)
+        controller.didMove(toParent: self)
 
         if selectedViewController == nil {
             selectedViewController = controller
@@ -240,9 +240,9 @@ class DSTabsViewController<HeaderView: UIView>:
         forItemAt indexPath: IndexPath
     ) {
         guard let cell = (cell as? DSContainerCell), let controller = cell.model else { return }
-        controller.willMove(toParentViewController: nil)
+        controller.willMove(toParent: nil)
         cell.model = nil
-        controller.removeFromParentViewController()
+        controller.removeFromParent()
     }
 
     public

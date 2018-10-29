@@ -30,10 +30,10 @@ public
 extension Array where Element == UIView {
 
     func stack(
-        axis: UILayoutConstraintAxis? = nil,
+        axis: NSLayoutConstraint.Axis? = nil,
         spacing: CGFloat? = nil,
-        alignment: UIStackViewAlignment? = nil,
-        distribution: UIStackViewDistribution? = nil
+        alignment: UIStackView.Alignment? = nil,
+        distribution: UIStackView.Distribution? = nil
     ) -> UIStackView {
         return UIStackView(arrangedSubviews: self)
             .set(axis: axis, spacing: spacing, alignment: alignment, distribution: distribution)

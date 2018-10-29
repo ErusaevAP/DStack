@@ -23,10 +23,10 @@ extension UIStackView {
 
     @discardableResult
     func set(
-        axis: UILayoutConstraintAxis? = nil,
+        axis: NSLayoutConstraint.Axis? = nil,
         spacing: CGFloat? = nil,
-        alignment: UIStackViewAlignment? = nil,
-        distribution: UIStackViewDistribution? = nil
+        alignment: UIStackView.Alignment? = nil,
+        distribution: UIStackView.Distribution? = nil
     ) -> Self {
         if let axis = axis { self.axis = axis }
         if let spacing = spacing { self.spacing = spacing }
