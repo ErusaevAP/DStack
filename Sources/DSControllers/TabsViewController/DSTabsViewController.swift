@@ -85,21 +85,21 @@ class DSTabsViewController<HeaderView: UIView>:
 
     private
     let flowLayout: UICollectionViewFlowLayout = {
-        let l = UICollectionViewFlowLayout()
-        l.scrollDirection = .horizontal
-        return l
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        return layout
     }()
 
     private lazy
     var containerView: UICollectionView = {
-        let v = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
-        v.backgroundColor = .clear
-        v.isPagingEnabled = true
-        v.dataSource = self
-        v.delegate = self
-        v.showsHorizontalScrollIndicator = false
-        v.register(DSContainerCell.self, forCellWithReuseIdentifier: DSContainerCell.reuseIdentifier)
-        return v
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        view.backgroundColor = .clear
+        view.isPagingEnabled = true
+        view.dataSource = self
+        view.delegate = self
+        view.showsHorizontalScrollIndicator = false
+        view.register(DSContainerCell.self, forCellWithReuseIdentifier: DSContainerCell.reuseIdentifier)
+        return view
     }()
 
     private(set)

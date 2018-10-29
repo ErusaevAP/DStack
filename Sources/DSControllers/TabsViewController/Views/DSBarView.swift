@@ -49,17 +49,17 @@ class DSTabsBarView: UIView, DSTabsBar {
             disposeBag = DisposeBag()
 
             buttons = titles.enumerated().flatMap { obj -> UIButton in
-                let bt = UIButton()
-                bt.setTitle(obj.element, for: .normal)
-                bt.rx.controlEvent(.touchUpInside).subscribe { [weak self] _ in
+                let button = UIButton()
+                button.setTitle(obj.element, for: .normal)
+                button.rx.controlEvent(.touchUpInside).subscribe { [weak self] _ in
                     self?.tappedOnTab?(obj.offset)
-                    self?.selectedButton = bt
+                    self?.selectedButton = button
                 }.disposed(by: disposeBag)
-                bt.setTitleColor(buttonTitleColor, for: .normal)
-                bt.setTitleColor(selectedButtonTitleColor, for: .selected)
-                bt.titleLabel?.font = titleFont
-                bt.translatesAutoresizingMaskIntoConstraints = false
-                return bt
+                button.setTitleColor(buttonTitleColor, for: .normal)
+                button.setTitleColor(selectedButtonTitleColor, for: .selected)
+                button.titleLabel?.font = titleFont
+                button.translatesAutoresizingMaskIntoConstraints = false
+                return button
             }
         }
     }
@@ -109,24 +109,24 @@ class DSTabsBarView: UIView, DSTabsBar {
 
     private lazy
     var selectorView: UIView = {
-        let v = UIView()
-        v.backgroundColor = selectorLineColor
-        return v
+        let view = UIView()
+        view.backgroundColor = selectorLineColor
+        return view
     }()
 
     private lazy
     var separatorView: UIView = {
-        let v = UIView()
-        v.backgroundColor = separatorLineColor
-        return v
+        let view = UIView()
+        view.backgroundColor = separatorLineColor
+        return view
     }()
 
     private
     var scrollView: UIScrollView = {
-        let s = UIScrollView()
-        s.clipsToBounds = false
-        s.showsHorizontalScrollIndicator = false
-        return s
+        let view = UIScrollView()
+        view.clipsToBounds = false
+        view.showsHorizontalScrollIndicator = false
+        return view
     }()
 
     private

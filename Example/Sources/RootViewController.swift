@@ -13,17 +13,17 @@ class RootViewController: UIViewController {
     private
     var contentViewController: UIViewController? {
         didSet {
-            oldValue?.willMove(toParentViewController: nil)
+            oldValue?.willMove(toParent: nil)
             oldValue?.view.removeFromSuperview()
-            oldValue?.removeFromParentViewController()
+            oldValue?.removeFromParent()
 
             if let contentViewController = contentViewController {
-                addChildViewController(contentViewController)
+                addChild(contentViewController)
                 view.addSubview(contentViewController.view)
 
                 contentViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 contentViewController.view.frame = view.bounds
-                contentViewController.didMove(toParentViewController: self)
+                contentViewController.didMove(toParent: self)
             }
         }
     }

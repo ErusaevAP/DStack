@@ -15,11 +15,11 @@ class Example3ViewController: UIViewController {
 
     private
     let makeLabel = { (title: String) -> UILabel in
-        let l = UILabel()
-        l.backgroundColor = .red
-        l.text = title
-        l.textAlignment = .center
-        return l
+        let label = UILabel()
+        label.backgroundColor = .red
+        label.text = title
+        label.textAlignment = .center
+        return label
     }
 
     // MARK: Subviews

@@ -102,9 +102,9 @@ extension UIView {
         marge: CGFloat = 0,
         priority: UILayoutPriority = .defaultHigh
     ) -> Self {
-        let c = leadingAnchor.constraint(equalTo: anchor)
-        c.isActive = true
-        c.priority = priority
+        let constraint = leadingAnchor.constraint(equalTo: anchor)
+        constraint.isActive = true
+        constraint.priority = priority
         return self
     }
 
@@ -114,9 +114,9 @@ extension UIView {
         marge: CGFloat = 0,
         priority: UILayoutPriority = .defaultHigh
     ) -> Self {
-        let c = trailingAnchor.constraint(equalTo: anchor)
-        c.isActive = true
-        c.priority = priority
+        let constraint = trailingAnchor.constraint(equalTo: anchor)
+        constraint.isActive = true
+        constraint.priority = priority
         return self
     }
 
@@ -169,9 +169,9 @@ extension UIView {
         marge: CGFloat = 0,
         priority: UILayoutPriority = .defaultHigh
     ) -> Self {
-        let c = leadingAnchor.constraint(greaterThanOrEqualTo: anchor)
-        c.isActive = true
-        c.priority = priority
+        let constraint = leadingAnchor.constraint(greaterThanOrEqualTo: anchor)
+        constraint.isActive = true
+        constraint.priority = priority
         return self
     }
 
@@ -181,9 +181,9 @@ extension UIView {
         marge: CGFloat = 0,
         priority: UILayoutPriority = .defaultHigh
     ) -> Self {
-        let c = trailingAnchor.constraint(greaterThanOrEqualTo: anchor)
-        c.isActive = true
-        c.priority = priority
+        let constraint = trailingAnchor.constraint(greaterThanOrEqualTo: anchor)
+        constraint.isActive = true
+        constraint.priority = priority
         return self
     }
 

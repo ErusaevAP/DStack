@@ -15,7 +15,7 @@ class TabsViewController: DSTabsViewController<HeaderView> {
     // MARK: Properties
 
     private
-    let ctrl2 = Example2ViewController()
+    let ctrl2 = DSTemplateViewController<WelcomelView>()
 
     private
     let ctrl3 = Example3ViewController()

@@ -16,9 +16,9 @@ class CollectionViewControllerSmall: UICollectionViewController {
 
     private
     lazy var refreshControl: UIRefreshControl = {
-        let r = UIRefreshControl()
-        r.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        return r
+        let ref = UIRefreshControl()
+        ref.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        return ref
     }()
 
     // MARK: Initialization

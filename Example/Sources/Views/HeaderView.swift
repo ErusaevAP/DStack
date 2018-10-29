@@ -25,32 +25,32 @@ class HeaderView: DSFlexibleHeader {
 
     private
     let button: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("Big Header", for: .normal)
-        bt.setTitle("Small Header", for: .selected)
-        bt.backgroundColor = .red
-        bt.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
-        return bt
+        let button = UIButton()
+        button.setTitle("Big Header", for: .normal)
+        button.setTitle("Small Header", for: .selected)
+        button.backgroundColor = .red
+        button.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
+        return button
     }()
 
     // MARK: Suviews
 
     private lazy
     var miniHeader: UILabel = {
-        let v = UILabel()
-        v.text = "Mini Header"
-        v.textAlignment = .center
-        v.alpha = 0
-        return v
+        let label = UILabel()
+        label.text = "Mini Header"
+        label.textAlignment = .center
+        label.alpha = 0
+        return label
     }()
 
     private
     let backgroundImageView: UIImageView = {
         let image = UIImage(named: "header_image")
-        let v = UIImageView(image: image)
-        v.contentMode = .scaleAspectFill
-        v.clipsToBounds = true
-        return v
+        let view = UIImageView(image: image)
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
     }()
 
     // MARK: Initialization
