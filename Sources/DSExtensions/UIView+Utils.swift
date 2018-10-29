@@ -14,7 +14,7 @@ extension UIView {
     }
 
     func add(subviews: [UIView?]) {
-        subviews.flatMap { $0 }.forEach { add(subviews: $0) }
+        subviews.compactMap { $0 }.forEach { add(subviews: $0) }
     }
 
     @discardableResult

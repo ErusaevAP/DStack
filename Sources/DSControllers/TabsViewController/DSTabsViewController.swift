@@ -134,7 +134,7 @@ class DSTabsViewController<HeaderView: UIView>:
     var viewControllers: [UIViewController] {
         didSet {
             if isViewLoaded {
-                tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
+                tabsBar?.titles = viewControllers.compactMap { $0.title }.flatMap { $0 }
                 containerView.reloadData()
                 if let selectedViewController = selectedViewController {
                     if let currentIndex = viewControllers.index(of: selectedViewController) {
@@ -316,7 +316,7 @@ class DSTabsViewController<HeaderView: UIView>:
         tabsBar?.tappedOnTab = { [weak self] in
             self?.selectedTabIndex = $0
         }
-        tabsBar?.titles = viewControllers.flatMap { $0.title }.flatMap { $0 }
+        tabsBar?.titles = viewControllers.compactMap { $0.title }.flatMap { $0 }
         tabsBar?.selectedTabIndex = selectedTabIndex
         if let headerView = headerView {
             headerView

@@ -48,7 +48,7 @@ class DSTabsBarView: UIView, DSTabsBar {
         didSet {
             disposeBag = DisposeBag()
 
-            buttons = titles.enumerated().flatMap { obj -> UIButton in
+            buttons = titles.enumerated().compactMap { obj -> UIButton in
                 let button = UIButton()
                 button.setTitle(obj.element, for: .normal)
                 button.rx.controlEvent(.touchUpInside).subscribe { [weak self] _ in

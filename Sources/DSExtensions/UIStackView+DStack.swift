@@ -17,7 +17,7 @@ extension UIStackView {
 
     @discardableResult
     func add(arrangedSubviews subviews: [UIView?]) -> Self {
-        subviews.flatMap { $0 }.forEach { addArrangedSubview($0) }
+        subviews.compactMap { $0 }.forEach { addArrangedSubview($0) }
         return self
     }
 
