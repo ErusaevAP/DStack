@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "DStack"
-    s.version       = "0.3.0"
+    s.version       = "0.4.0"
     s.summary       = "Helpers"
     s.description   = "Helpers for views"
     s.homepage      = "https://github.com/ErusaevAP/DStack"
@@ -25,8 +25,8 @@ Pod::Spec.new do |s|
     s.subspec 'DSControllers' do |controllers|
         controllers.source_files   = 'Sources/DSControllers/**/*.{swift}'
         controllers.dependency 'DStack/DSExtensions'
-        controllers.dependency "RxSwift", '~> 4.0'
-        controllers.dependency "RxCocoa", '~> 4.0'
+        controllers.dependency "RxSwift", '~> 4.3.1'
+        controllers.dependency "RxCocoa", '~> 4.3.1'
 
     end
 
