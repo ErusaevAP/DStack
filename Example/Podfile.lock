@@ -1,15 +1,18 @@
 PODS:
-  - DStack/DSControllers (0.3.0):
+  - DStack/DSControllers (0.4.1):
     - DStack/DSExtensions
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - DStack/DSExtensions (0.3.0)
-  - DStack/DSViews (0.3.0):
+    - RxCocoa
+    - RxSwift
+  - DStack/DSExtensions (0.4.1)
+  - DStack/DSViews (0.4.1):
     - DStack/DSExtensions
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
-  - SwiftLint (0.27.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SwiftLint (0.33.1)
 
 DEPENDENCIES:
   - DStack/DSControllers (from `..`)
@@ -19,6 +22,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SwiftLint
 
@@ -27,11 +31,12 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  DStack: 5f813a04e4d717a1da9865a6785cb7d04c64aba1
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  DStack: f2a4a5c64aec5e8d422234ef1d14ad32f233f93c
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
 
 PODFILE CHECKSUM: 6325110f71b1f28cbc4462b6e4024d0e54140f7a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.4

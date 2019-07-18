@@ -22,12 +22,13 @@ protocol DSContentDeferredLoading: class {
 
 // MARK: -
 
+private
+typealias Protocols = UICollectionViewDelegate
+    & UICollectionViewDataSource
+    & UICollectionViewDelegateFlowLayout
+
 open
-class DSTabsViewController<HeaderView: UIView>:
-    UIViewController,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout {
+class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     // MARK: Properties
 

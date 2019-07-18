@@ -55,7 +55,8 @@ class CollectionViewController: UICollectionViewController {
     @objc
     func refresh() {
         let disposeBag = DisposeBag()
-        Observable<Int>.interval(2.0, scheduler: MainScheduler.instance).subscribe { [weak self] _ in
+        let interval = DispatchTimeInterval.seconds(2)
+        Observable<Int>.interval(interval, scheduler: MainScheduler.instance).subscribe { [weak self] _ in
             self?.disposeBag = nil
             self?.refreshControl.endRefreshing()
         }.disposed(by: disposeBag)
