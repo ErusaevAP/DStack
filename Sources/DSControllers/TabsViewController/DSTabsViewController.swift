@@ -138,7 +138,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
                 tabsBar?.titles = viewControllers.compactMap { $0.title }
                 containerView.reloadData()
                 if let selectedViewController = selectedViewController {
-                    if let currentIndex = viewControllers.index(of: selectedViewController) {
+                    if let currentIndex = viewControllers.firstIndex(of: selectedViewController) {
                         selectedTabIndex = currentIndex
                     } else {
                         selectedTabIndex = min(tabsBar?.selectedTabIndex ?? 0, viewControllers.count - 1)
