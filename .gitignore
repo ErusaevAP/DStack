@@ -65,3 +65,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+Example/DStackExample.xcworkspace/contents.xcworkspacedata
+Example/DStackExample.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
