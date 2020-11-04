@@ -1,5 +1,5 @@
 //
-//  WelcomelView.swift
+//  WelcomeView.swift
 //  DStackExample
 //
 //  Created by Andrey Erusaev on 13/09/2018.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomelView: UIView {
+class WelcomeView: UIView {
 
     init() {
         super.init(frame: .zero)

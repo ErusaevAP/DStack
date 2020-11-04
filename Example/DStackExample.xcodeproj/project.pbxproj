@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03C5932D214AC2D90023B113 /* WelcomelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5932C214AC2D90023B113 /* WelcomelView.swift */; };
+		03C5932D214AC2D90023B113 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5932C214AC2D90023B113 /* WelcomeView.swift */; };
 		3D3B3F7B1F66C7A800788B78 /* DStackExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */; };
 		3D41A0441F4C428C00C10118 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41A0431F4C428C00C10118 /* TabsViewController.swift */; };
 		3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83CD7C1F3E0255009E0E39 /* RootViewController.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03C5932C214AC2D90023B113 /* WelcomelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomelView.swift; sourceTree = "<group>"; };
+		03C5932C214AC2D90023B113 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3082C38D7F588D98FCFCB877 /* Pods_DStackExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DStackExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3B3F781F66C7A800788B78 /* DStackExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DStackExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3B3F7A1F66C7A800788B78 /* DStackExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DStackExampleUITests.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			children = (
 				3DA674E71F45C6B40097E294 /* HeaderView.swift */,
 				3DE6AC891F4B37CC00B805ED /* CollectionViewCell.swift */,
-				03C5932C214AC2D90023B113 /* WelcomelView.swift */,
+				03C5932C214AC2D90023B113 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,7 +163,6 @@
 				F18213B0DFB11127AC82C09D /* Pods-DStackExample.debug.xcconfig */,
 				D58ACC0C7830E0D20535B86E /* Pods-DStackExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -353,7 +352,7 @@
 				3D869B231F31F9D300AB5F97 /* Example3ViewController.swift in Sources */,
 				3D83CD7D1F3E0255009E0E39 /* RootViewController.swift in Sources */,
 				3D41A0441F4C428C00C10118 /* TabsViewController.swift in Sources */,
-				03C5932D214AC2D90023B113 /* WelcomelView.swift in Sources */,
+				03C5932D214AC2D90023B113 /* WelcomeView.swift in Sources */,
 				3DC0FEFC1F4D969000079E59 /* CollectionViewControllerSmall.swift in Sources */,
 				3D869B271F32005A00AB5F97 /* Example1ViewController.swift in Sources */,
 				3D869B241F31F9D300AB5F97 /* Example2ViewController.swift in Sources */,
