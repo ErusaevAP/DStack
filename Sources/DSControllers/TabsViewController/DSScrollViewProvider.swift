@@ -9,7 +9,7 @@
 // MARK: -
 
 public
-protocol DSScrollViewProvider: class {
+protocol DSScrollViewProvider: AnyObject {
 
     var dsScrollView: UIScrollView? { get }
 

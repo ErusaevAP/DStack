@@ -14,7 +14,7 @@ import RxCocoa
 // MARK: -
 
 public
-protocol DSContentDeferredLoading: class {
+protocol DSContentDeferredLoading: AnyObject {
 
     var contentLoaded: ((UIViewController) -> Void)? { get set }
 

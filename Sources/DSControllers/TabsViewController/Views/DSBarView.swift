@@ -12,7 +12,7 @@ import RxSwift
 // MARK: -
 
 public
-protocol DSTabsBar: class {
+protocol DSTabsBar: AnyObject {
 
     var tappedOnTab: ((Int) -> Void)? { get set }
 
