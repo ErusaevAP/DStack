@@ -93,7 +93,8 @@ class HeaderView: DSFlexibleHeader {
 
     // MARK: Action
 
-    @objc func buttonTap() {
+    @objc
+    func buttonTap() {
         button.isSelected = !button.isSelected
         heightConstraint?.constant = maxHeight
         UIView.animate(withDuration: 0.2) { [weak self] in
