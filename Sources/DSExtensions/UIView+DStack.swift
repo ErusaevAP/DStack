@@ -3,7 +3,6 @@
 //  MG
 //
 //  Created by Andrei Erusaev on 6/21/17.
-//  Copyright © 2017 erusaevap. All rights reserved.
 //
 
 // MARK: - Size

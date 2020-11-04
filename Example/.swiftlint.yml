@@ -51,7 +51,7 @@ whitelist_rules:
   - extension_access_modifier
   # fallthrough
   - fatal_error_message
-  # file_header
+  - file_header
   - file_length
   # file_name
   - file_name_no_space

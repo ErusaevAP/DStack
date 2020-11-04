@@ -3,7 +3,6 @@
 //  DStackExample
 //
 //  Created by Andrei Erusaev on 8/17/17.
-//  Copyright © 2017 erusaevap. All rights reserved.
 //
 
 import DStack

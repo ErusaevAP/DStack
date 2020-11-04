@@ -3,7 +3,6 @@
 //  DStackExampleUITests
 //
 //  Created by Andrei Erusaev on 9/11/17.
-//  Copyright © 2017 erusaevap. All rights reserved.
 //
 
 import XCTest

@@ -3,7 +3,6 @@
 //  DStackExample
 //
 //  Created by Andrey Erusaev on 13/09/2018.
-//  Copyright © 2018 erusaevap. All rights reserved.
 //
 
 import UIKit
