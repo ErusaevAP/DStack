@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.license       = "MIT"
     s.author        = { "Andrey Erusaev" => "erusaevap@gmail.com" }
 
-    s.platform      = :ios, "10.0"
+    s.platform      = :ios, "11.0"
     s.source        = { :git => "https://github.com/erusaevap/DStack.git", :tag => "#{s.version}" }
 
     s.default_subspec = 'DSExtensions'
