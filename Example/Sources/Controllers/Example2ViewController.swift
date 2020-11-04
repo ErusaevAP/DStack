@@ -51,7 +51,7 @@ class Example2ViewController: UIViewController {
 
         label1.add(inRootView: view)
             .setSize(width: side, height: side)
-            .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+            .setTopAnchor(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             .setCenterX()
 
         label2.add(inRootView: view)
@@ -61,7 +61,7 @@ class Example2ViewController: UIViewController {
 
         label3.add(inRootView: view)
             .setSize(width: side, height: side)
-            .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
+            .setBottomAnchor(equalTo: view.safeAreaLayoutGuide.topAnchor)
             .setCenterX()
 
         label4.add(inRootView: view)
