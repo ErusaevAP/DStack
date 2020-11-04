@@ -14,7 +14,11 @@ class TabsViewController: DSTabsViewController<HeaderView> {
     // MARK: Properties
 
     private
-    let ctrl2 = DSTemplateViewController<WelcomelView>()
+    let ctrl2: DSTemplateViewController<WelcomelView> = {
+        let ctrl = DSTemplateViewController<WelcomelView>()
+        ctrl.title = "Welcome View"
+        return ctrl
+    }()
 
     private
     let ctrl3 = Example3ViewController()
