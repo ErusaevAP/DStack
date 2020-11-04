@@ -22,7 +22,4 @@ class DStackExampleUITests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-    }
-
 }
