@@ -20,7 +20,7 @@ class DSNavigationBarSatate {
             shadowImage: UIImage(),
             isTranslucent: true,
             backgroundColor: .clear,
-            tintColor: .white,
+            tintColor: .black,
             barStyle: .black
         )
     }
