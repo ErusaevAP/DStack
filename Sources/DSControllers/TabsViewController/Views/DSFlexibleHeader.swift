@@ -13,12 +13,12 @@ class DSFlexibleHeader: UIView {
 
     open
     var maxHeight: CGFloat {
-        return 100
+        100
     }
 
     open
     var minHeight: CGFloat {
-        return 0
+        0
     }
 
     var scrollOffset: CGPoint = .zero {

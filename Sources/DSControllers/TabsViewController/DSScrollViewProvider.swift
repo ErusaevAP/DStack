@@ -21,7 +21,7 @@ extension UICollectionViewController: DSScrollViewProvider {
 
     public
     var dsScrollView: UIScrollView? {
-        return collectionView
+        collectionView
     }
 
 }
@@ -32,7 +32,7 @@ extension UITableViewController: DSScrollViewProvider {
 
     public
     var dsScrollView: UIScrollView? {
-        return tableView
+        tableView
     }
 
 }

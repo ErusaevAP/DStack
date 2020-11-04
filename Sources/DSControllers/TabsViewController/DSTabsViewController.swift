@@ -40,7 +40,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     private
     var topInset: CGFloat {
-        return tabsBarView?.frame.height ?? 0
+        tabsBarView?.frame.height ?? 0
     }
 
     public
@@ -58,7 +58,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     open
     var isAnimatedScroolWhenTabSelected: Bool {
-        return false
+        false
     }
 
     private
@@ -81,7 +81,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     public
     var tabsBar: DSTabsBar? {
-        return tabsBarView as? DSTabsBar
+        tabsBarView as? DSTabsBar
     }
 
     private
@@ -204,7 +204,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     public
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewControllers.count
+        viewControllers.count
     }
 
     public
@@ -212,7 +212,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(
+        collectionView.dequeueReusableCell(
             withReuseIdentifier: DSContainerCell.reuseIdentifier,
             for: indexPath
         )
@@ -252,7 +252,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(
+        CGSize(
             width: collectionView.frame.size.width,
             height: collectionView.frame.height - topInset
         )
@@ -264,7 +264,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        return 0
+        0
     }
 
     public
@@ -273,7 +273,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(
+        UIEdgeInsets(
             top: topInset,
             left: 0,
             bottom: 0,
@@ -285,7 +285,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
 
     open
     func buildTabsBarView() -> UIView? {
-        return DSTabsBarView()
+        DSTabsBarView()
     }
 
     // MARK: Private Methods

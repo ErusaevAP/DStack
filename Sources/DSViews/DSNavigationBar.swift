@@ -16,7 +16,7 @@ class DSNavigationBarSatate {
     public
     static
     var clear: DSNavigationBarSatate {
-        return DSNavigationBarSatate(
+        DSNavigationBarSatate(
             backgroundImage: UIImage(),
             shadowImage: UIImage(),
             isTranslucent: true,
@@ -135,7 +135,7 @@ public
 extension UINavigationController {
 
     var dsNavigationBar: DSNavigationBar? {
-        return navigationBar as? DSNavigationBar
+        navigationBar as? DSNavigationBar
     }
 
 }

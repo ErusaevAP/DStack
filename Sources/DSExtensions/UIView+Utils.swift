@@ -35,7 +35,7 @@ extension Array where Element == UIView {
         alignment: UIStackView.Alignment? = nil,
         distribution: UIStackView.Distribution? = nil
     ) -> UIStackView {
-        return UIStackView(arrangedSubviews: self)
+        UIStackView(arrangedSubviews: self)
             .set(axis: axis, spacing: spacing, alignment: alignment, distribution: distribution)
     }
 

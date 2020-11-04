@@ -74,7 +74,7 @@ class CollectionViewController: UICollectionViewController {
 
     override
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        100
     }
 
     override
@@ -82,7 +82,7 @@ class CollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(
+        collectionView.dequeueReusableCell(
             withReuseIdentifier: CollectionViewCell.reuseIdentifier,
             for: indexPath
         )

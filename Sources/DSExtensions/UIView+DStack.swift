@@ -39,7 +39,7 @@ extension UIView {
 
     @discardableResult
     func setSize(size: CGSize) -> Self {
-        return setSize(width: size.width, height: size.height)
+        setSize(width: size.width, height: size.height)
     }
 
     @discardableResult
@@ -196,8 +196,7 @@ extension UIView {
 
     @discardableResult
     func fill(viewController: UIViewController, marge: CGFloat = 0) -> Self {
-        return self
-            .setTopAnchor(equalTo: viewController.topLayoutGuide.bottomAnchor, marge: marge)
+        setTopAnchor(equalTo: viewController.topLayoutGuide.bottomAnchor, marge: marge)
             .setRightAnchor(equalTo: viewController.view.rightAnchor, marge: marge)
             .setBottomAnchor(equalTo: viewController.bottomLayoutGuide.topAnchor, marge: marge)
             .setLeftAnchor(equalTo: viewController.view.leftAnchor, marge: marge)

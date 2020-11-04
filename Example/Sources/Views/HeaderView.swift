@@ -15,12 +15,12 @@ class HeaderView: DSFlexibleHeader {
 
     override
     var maxHeight: CGFloat {
-        return button.isSelected ? 160 : 260
+        button.isSelected ? 160 : 260
     }
 
     override
     var minHeight: CGFloat {
-        return 120
+        120
     }
 
     private
