@@ -46,7 +46,8 @@ class DSNavigationBarSatate {
         isTranslucent: Bool = false,
         backgroundColor: UIColor? = nil,
         tintColor: UIColor? = nil,
-        barStyle: UIBarStyle = .default) {
+        barStyle: UIBarStyle = .default
+    ) {
         self.backgroundImage = backgroundImage
         self.shadowImage = shadowImage
         self.isTranslucent = isTranslucent
