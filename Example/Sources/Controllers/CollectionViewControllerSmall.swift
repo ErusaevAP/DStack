@@ -5,9 +5,9 @@
 //  Created by Andrei Erusaev on 8/21/17.
 //
 
-import UIKit
 import RxCocoa
 import RxSwift
+import UIKit
 
 class CollectionViewControllerSmall: UICollectionViewController {
 

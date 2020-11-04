@@ -5,7 +5,6 @@
 //  Created by Andrei Erusaev on 8/21/17.
 //
 
-import UIKit
 import DStack
 
 class CollectionViewCell: UICollectionViewCell {

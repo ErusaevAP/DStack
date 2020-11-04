@@ -6,8 +6,8 @@
 //
 //
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 // swiftlint:disable type_body_length
 

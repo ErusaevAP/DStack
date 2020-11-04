@@ -5,7 +5,6 @@
 //  Created by Andrei Erusaev on 8/2/17.
 //
 
-import UIKit
 import DStack
 
 class Example3ViewController: UIViewController {
