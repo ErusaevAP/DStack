@@ -8,8 +8,6 @@
 
 class DSContainerCell: UICollectionViewCell {
 
-    // MARK: Properties
-
     static
     let reuseIdentifier = "ContainerCell"
 
@@ -23,8 +21,6 @@ class DSContainerCell: UICollectionViewCell {
             }
         }
     }
-
-    // MARK: Initialization
 
     override
     init(frame: CGRect) {

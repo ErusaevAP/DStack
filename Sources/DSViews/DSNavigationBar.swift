@@ -5,12 +5,8 @@
 //  Created by Andrey Erusaev on 18/01/2018.
 //
 
-// MARK: -
-
 public
 class DSNavigationBarSatate {
-
-    // MARK: Properties
 
     public
     static
@@ -37,8 +33,6 @@ class DSNavigationBarSatate {
 
     let tintColor: UIColor?
 
-    // MARK: Initialization
-
     public
     init(
         backgroundImage: UIImage? = nil,
@@ -58,17 +52,11 @@ class DSNavigationBarSatate {
 
 }
 
-// MARK: -
-
 public
 class DSNavigationBar: UINavigationBar {
 
-    // MARK: Properties
-
     private
     var barStates: [DSNavigationBarSatate] = []
-
-    // MARK: Initialization
 
     override
     init(frame: CGRect) {
@@ -82,8 +70,6 @@ class DSNavigationBar: UINavigationBar {
         super.init(coder: aDecoder)
         pushCurrentState()
     }
-
-    // MARK: Public Methods
 
     public
     func pushState(barState: DSNavigationBarSatate) {
@@ -102,8 +88,6 @@ class DSNavigationBar: UINavigationBar {
         }
         applayBarState(barState: lastBarState)
     }
-
-    // MARK: Private Methods
 
     private
     func pushCurrentState() {
@@ -128,8 +112,6 @@ class DSNavigationBar: UINavigationBar {
     }
 
 }
-
-// MARK: -
 
 public
 extension UINavigationController {

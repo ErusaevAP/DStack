@@ -18,8 +18,6 @@ class CollectionViewController: UICollectionViewController {
         return ref
     }()
 
-    // MARK: Initialization
-
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -31,8 +29,6 @@ class CollectionViewController: UICollectionViewController {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Life Cycle
 
     override
     func viewDidLoad() {
@@ -68,8 +64,6 @@ class CollectionViewController: UICollectionViewController {
 
         refreshControl.endRefreshing()
     }
-
-    // MARK: UICollectionViewDataSource
 
     override
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

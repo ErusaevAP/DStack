@@ -9,12 +9,8 @@
 open
 class DSTemplateViewController<View: UIView>: UIViewController {
 
-    // MARK: Properties
-
     public
     let contentView: View
-
-    // MARK: Initialization
 
     public
     init(contentView: View? = nil) {
@@ -26,8 +22,6 @@ class DSTemplateViewController<View: UIView>: UIViewController {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Life Cycle
 
     open override
     func viewDidLoad() {

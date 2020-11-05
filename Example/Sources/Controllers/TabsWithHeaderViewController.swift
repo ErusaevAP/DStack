@@ -10,8 +10,6 @@ import DStack
 final
 class TabsWithHeaderViewController: DSTabsViewController<HeaderView> {
 
-    // MARK: Initialization
-
     init() {
         super.init(
             headerView: HeaderView(),
@@ -28,8 +26,6 @@ class TabsWithHeaderViewController: DSTabsViewController<HeaderView> {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Life Cycle
 
     override
     func viewDidLoad() {

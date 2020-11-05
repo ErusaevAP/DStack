@@ -10,8 +10,6 @@ import DStack
 final
 class Example3ViewController: UIViewController {
 
-    // MARK: Properties
-
     private
     let makeLabel = { (title: String) -> UILabel in
         let label = UILabel()
@@ -20,8 +18,6 @@ class Example3ViewController: UIViewController {
         label.textAlignment = .center
         return label
     }
-
-    // MARK: Subviews
 
     private lazy
     var label1: UILabel = self.makeLabel("1")
@@ -37,8 +33,6 @@ class Example3ViewController: UIViewController {
 
     private lazy
     var label5: UILabel = self.makeLabel("5")
-
-    // MARK: Life Cycle
 
     override
     func viewDidLoad() {
@@ -72,8 +66,6 @@ class Example3ViewController: UIViewController {
             .setSize(width: side, height: side)
             .setCenter()
     }
-
-    // MARK: Initialization
 
     init() {
         super.init(nibName: nil, bundle: nil)

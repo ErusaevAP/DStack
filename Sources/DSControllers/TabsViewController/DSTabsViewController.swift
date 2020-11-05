@@ -11,16 +11,12 @@ import RxSwift
 
 // swiftlint:disable type_body_length
 
-// MARK: -
-
 public
 protocol DSContentDeferredLoading: AnyObject {
 
     var contentLoaded: ((UIViewController) -> Void)? { get set }
 
 }
-
-// MARK: -
 
 private
 typealias Protocols = UICollectionViewDelegate
@@ -29,8 +25,6 @@ typealias Protocols = UICollectionViewDelegate
 
 open
 class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
-
-    // MARK: Properties
 
     public
     var didSetCurrentTab: ((UIViewController) -> Void)?
@@ -150,8 +144,6 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         }
     }
 
-    // MARK: Initialization
-
     public
     init(headerView: HeaderView? = nil, viewControllers: [UIViewController]) {
         self.headerView = headerView
@@ -164,8 +156,6 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Life Cycle
 
     open override
     func viewDidLoad() {
@@ -187,8 +177,6 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         super.viewDidLayoutSubviews()
         flowLayout.invalidateLayout()
     }
-
-    // MARK: UICollectionViewDataSource
 
     public
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -281,14 +269,10 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         )
     }
 
-    // MARK: Public Methods
-
     open
     func buildTabsBarView() -> UIView? {
         DSTabsBarView()
     }
-
-    // MARK: Private Methods
 
     private
     func connectScrollView(_ scrollView: UIScrollView?, flexibleHeader: DSFlexibleHeader?) {

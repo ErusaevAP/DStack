@@ -10,8 +10,6 @@ import DStack
 final
 class Example1ViewController: UITableViewController {
 
-    // MARK: Life Cycle
-
     override
     func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +18,6 @@ class Example1ViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
     }
-
-    // MARK: UITableViewDataSource
 
     override
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,8 +51,6 @@ class Example1ViewController: UITableViewController {
             break
         }
     }
-
-    // MARK: Initialization
 
     init() {
         super.init(style: .plain)

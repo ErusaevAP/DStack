@@ -7,12 +7,8 @@
 
 import DStack
 
-// MARK: -
-
 final
 class MainViewController: UITabBarController {
-
-    // MARK: Initialization
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -33,8 +29,6 @@ class MainViewController: UITabBarController {
     }
 
 }
-
-// MARK: -
 
 private
 extension UIViewController {

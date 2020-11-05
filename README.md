@@ -9,8 +9,6 @@
 ```swift
 class TabsViewController: DSTabsViewController<HeaderView> {
 
- // MARK: Initialization
-
  init() {
   super.init(viewControllers: [
    UIViewController(),

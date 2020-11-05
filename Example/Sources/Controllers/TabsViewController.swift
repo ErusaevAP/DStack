@@ -10,8 +10,6 @@ import DStack
 final
 class TabsViewController: DSTabsViewController<HeaderView> {
 
-    // MARK: Properties
-
     private
     let ctrl2: DSTemplateViewController<WelcomeView> = {
         let ctrl = DSTemplateViewController<WelcomeView>()
@@ -25,8 +23,6 @@ class TabsViewController: DSTabsViewController<HeaderView> {
     private
     let ctrl4 = CollectionViewController()
 
-    // MARK: Initialization
-
     init() {
         super.init(
             viewControllers: []
@@ -38,8 +34,6 @@ class TabsViewController: DSTabsViewController<HeaderView> {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Overrided Methods
 
     override
     func viewDidLoad() {
@@ -62,8 +56,6 @@ class TabsViewController: DSTabsViewController<HeaderView> {
             )
         ]
     }
-
-    // MARK: Actions
 
     @objc private
     func on2Tapped() {

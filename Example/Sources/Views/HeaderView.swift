@@ -10,8 +10,6 @@ import DStack
 final
 class HeaderView: DSFlexibleHeader {
 
-    // MARK: Properties
-
     override
     var maxHeight: CGFloat {
         button.isSelected ? 160 : 260
@@ -32,8 +30,6 @@ class HeaderView: DSFlexibleHeader {
         return button
     }()
 
-    // MARK: Suviews
-
     private lazy
     var miniHeader: UILabel = {
         let label = UILabel()
@@ -51,8 +47,6 @@ class HeaderView: DSFlexibleHeader {
         view.clipsToBounds = true
         return view
     }()
-
-    // MARK: Initialization
 
     override
     init() {
@@ -78,8 +72,6 @@ class HeaderView: DSFlexibleHeader {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Layout
-
     override
     func layoutSubviews() {
         super.layoutSubviews()
@@ -89,8 +81,6 @@ class HeaderView: DSFlexibleHeader {
         button.alpha = alpha
         miniHeader.alpha = 1 - alpha
     }
-
-    // MARK: Action
 
     @objc
     func buttonTap() {

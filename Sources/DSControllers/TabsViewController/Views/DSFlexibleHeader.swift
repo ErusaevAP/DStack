@@ -9,8 +9,6 @@
 open
 class DSFlexibleHeader: UIView {
 
-    // MARK: Properties
-
     open
     var maxHeight: CGFloat {
         100
@@ -45,8 +43,6 @@ class DSFlexibleHeader: UIView {
     private
     var beginHeightHeader: CGFloat = 0
 
-    // MARK: Methods
-
     func willBeginDragging(scrollOffset: CGPoint) {
         beginScrollOffset = scrollOffset
         beginHeightHeader = heightConstraint?.constant ?? 0
@@ -67,8 +63,6 @@ class DSFlexibleHeader: UIView {
         }
     }
 
-    // MARK: Initialization
-
     public
     init() {
         super.init(frame: .zero)
@@ -86,8 +80,6 @@ class DSFlexibleHeader: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
-    // MARK: Private Methods
 
     private
     func setup() {

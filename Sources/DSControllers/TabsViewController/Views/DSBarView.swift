@@ -9,8 +9,6 @@
 import RxCocoa
 import RxSwift
 
-// MARK: -
-
 public
 protocol DSTabsBar: AnyObject {
 
@@ -24,12 +22,8 @@ protocol DSTabsBar: AnyObject {
 
 }
 
-// MARK: -
-
 open
 class DSTabsBarView: UIView, DSTabsBar {
-
-    // MARK: Properties
 
     open
     var tappedOnTab: ((Int) -> Void)?
@@ -143,8 +137,6 @@ class DSTabsBarView: UIView, DSTabsBar {
     private
     var selectorViewLeftAlignment: NSLayoutConstraint?
 
-    // MARK: Initialization
-
     public
     init(
         titleFont: UIFont? = nil,
@@ -177,16 +169,12 @@ class DSTabsBarView: UIView, DSTabsBar {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Layout
-
     open
     override func layoutSubviews() {
         super.layoutSubviews()
 
         updateSelectorConstraints()
     }
-
-    // MARK: Private Methods
 
     private
     func configureSubviews() {

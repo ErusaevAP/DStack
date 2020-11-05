@@ -5,8 +5,6 @@
 //  Created by Andrei Erusaev on 6/21/17.
 //
 
-// MARK: - Size
-
 public
 extension UIView {
 
@@ -53,8 +51,6 @@ extension UIView {
     }
 
 }
-
-// MARK: - Anchor EqualTo
 
 public
 extension UIView {
@@ -121,8 +117,6 @@ extension UIView {
 
 }
 
-// MARK: - Anchor GreaterThanOrEqualTo
-
 public
 extension UIView {
 
@@ -188,8 +182,6 @@ extension UIView {
 
 }
 
-// MARK: - Fill
-
 public
 extension UIView {
 
@@ -222,8 +214,6 @@ extension UIView {
     }
 
 }
-
-// MARK: - Alignment
 
 public
 extension UIView {
@@ -261,8 +251,6 @@ extension UIView {
     }
 
 }
-
-// MARK: - Center
 
 public
 extension UIView {

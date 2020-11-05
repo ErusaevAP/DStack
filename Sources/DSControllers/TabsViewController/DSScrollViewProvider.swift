@@ -6,16 +6,12 @@
 //
 //
 
-// MARK: -
-
 public
 protocol DSScrollViewProvider: AnyObject {
 
     var dsScrollView: UIScrollView? { get }
 
 }
-
-// MARK: -
 
 extension UICollectionViewController: DSScrollViewProvider {
 
@@ -25,8 +21,6 @@ extension UICollectionViewController: DSScrollViewProvider {
     }
 
 }
-
-// MARK: -
 
 extension UITableViewController: DSScrollViewProvider {
 

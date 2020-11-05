@@ -11,16 +11,12 @@ import RxSwift
 final
 class CollectionViewControllerSmall: UICollectionViewController {
 
-    // MARK: Properties
-
     private
     lazy var refreshControl: UIRefreshControl = {
         let ref = UIRefreshControl()
         ref.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         return ref
     }()
-
-    // MARK: Initialization
 
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -33,8 +29,6 @@ class CollectionViewControllerSmall: UICollectionViewController {
     init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: Life Cycle
 
     override
     func viewDidLoad() {
@@ -71,8 +65,6 @@ class CollectionViewControllerSmall: UICollectionViewController {
 
         refreshControl.endRefreshing()
     }
-
-    // MARK: UICollectionViewDataSource
 
     override
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

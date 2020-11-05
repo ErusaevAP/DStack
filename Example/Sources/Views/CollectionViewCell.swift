@@ -10,12 +10,8 @@ import DStack
 final
 class CollectionViewCell: UICollectionViewCell {
 
-    // MARK: Properties
-
     static
     let reuseIdentifier = "CollectionViewCell"
-
-    // MARK: Subviews
 
     private
     let label = UILabel()
@@ -25,8 +21,6 @@ class CollectionViewCell: UICollectionViewCell {
             label.text = model
         }
     }
-
-    // MARK: Initialization
 
     override
     init(frame: CGRect) {
