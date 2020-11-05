@@ -159,7 +159,6 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
     func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        automaticallyAdjustsScrollViewInsets = false
         configureLayout()
     }
 
@@ -305,7 +304,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
             headerView
                 .add(inRootView: view)
                 .setHeightAnchor(equalTo: headerView.heightAnchor)
-                .setTopAnchor(equalTo: topLayoutGuide.topAnchor)
+                .setTopAnchor(equalTo: view.safeAreaLayoutGuide.topAnchor)
                 .setLeftAnchor(equalTo: view.leftAnchor)
                 .setRightAnchor(equalTo: view.rightAnchor)
             containerView
@@ -313,7 +312,7 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
                 .setTopAnchor(equalTo: headerView.bottomAnchor)
                 .setLeftAnchor(equalTo: view.leftAnchor)
                 .setRightAnchor(equalTo: view.rightAnchor)
-                .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
+                .setBottomAnchor(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: tabsBar?.height)
@@ -323,14 +322,14 @@ class DSTabsViewController<HeaderView: UIView>: UIViewController, Protocols {
         } else {
             containerView
                 .add(inRootView: view)
-                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setTopAnchor(equalTo: view.safeAreaLayoutGuide.topAnchor)
                 .setLeftAnchor(equalTo: view.leftAnchor)
                 .setRightAnchor(equalTo: view.rightAnchor)
-                .setBottomAnchor(equalTo: bottomLayoutGuide.topAnchor)
+                .setBottomAnchor(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             tabsBarView?
                 .add(inRootView: view)
                 .setSize(height: tabsBar?.height)
-                .setTopAnchor(equalTo: topLayoutGuide.bottomAnchor)
+                .setTopAnchor(equalTo: view.safeAreaLayoutGuide.topAnchor)
                 .setLeftAnchor(equalTo: view.leftAnchor, marge: 5)
                 .setRightAnchor(equalTo: view.rightAnchor, marge: 5)
         }

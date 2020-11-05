@@ -187,9 +187,9 @@ extension UIView {
 
     @discardableResult
     func fill(viewController: UIViewController, marge: CGFloat = 0) -> Self {
-        setTopAnchor(equalTo: viewController.topLayoutGuide.bottomAnchor, marge: marge)
+        setTopAnchor(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor, marge: marge)
             .setRightAnchor(equalTo: viewController.view.rightAnchor, marge: marge)
-            .setBottomAnchor(equalTo: viewController.bottomLayoutGuide.topAnchor, marge: marge)
+            .setBottomAnchor(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, marge: marge)
             .setLeftAnchor(equalTo: viewController.view.leftAnchor, marge: marge)
     }
 

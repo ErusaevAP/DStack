@@ -1,10 +1,10 @@
 PODS:
-  - DStack/DSControllers (0.4.1):
+  - DStack/DSControllers (0.4.2):
     - DStack/DSExtensions
     - RxCocoa
     - RxSwift
-  - DStack/DSExtensions (0.4.1)
-  - DStack/DSViews (0.4.1):
+  - DStack/DSExtensions (0.4.2)
+  - DStack/DSViews (0.4.2):
     - DStack/DSExtensions
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  DStack: b27186b09f5908086f29a913153f7ded33b04dea
+  DStack: a65d28119d00aa6bd319076ee5c3fe99d2eadcad
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178

@@ -1,15 +1,16 @@
 Pod::Spec.new do |s|
-    s.author = { "Andrey Erusaev" => "erusaevap@gmail.com" }
+    s.version = '0.4.2'
+    s.name = 'DStack'
+
+    s.author = { 'Andrey Erusaev' => 'erusaevap@gmail.com' }
     s.default_subspec = 'DSExtensions'
-    s.description = "Helpers for views"
-    s.homepage = "https://github.com/ErusaevAP/DStack"
-    s.license = "MIT"
-    s.name = "DStack"
-    s.platform = :ios, "11.0"
-    s.source = { :git => "https://github.com/erusaevap/DStack.git", :tag => "#{s.version}" }
-    s.summary = "Helpers"
-    s.swift_versions = ['5.0']
-    s.version = "0.4.2"
+    s.description = 'Helpers for views'
+    s.homepage = 'https://github.com/ErusaevAP/DStack'
+    s.license = 'MIT'
+    s.platform = :ios, '11.0'
+    s.source = { :git => 'https://github.com/erusaevap/DStack.git', :tag => "#{s.version}" }
+    s.summary = 'Helpers'
+    s.swift_versions = '5.0'
 
     s.subspec 'DSExtensions' do |extensions|
         extensions.source_files  = 'Sources/DSExtensions/*.{swift}'
@@ -23,8 +24,8 @@ Pod::Spec.new do |s|
     s.subspec 'DSControllers' do |controllers|
         controllers.source_files   = 'Sources/DSControllers/**/*.{swift}'
         controllers.dependency 'DStack/DSExtensions'
-        controllers.dependency "RxSwift"
-        controllers.dependency "RxCocoa"
+        controllers.dependency 'RxSwift'
+        controllers.dependency 'RxCocoa'
 
     end
 
