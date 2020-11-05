@@ -6,7 +6,6 @@
 //
 
 import DStack
-import UIKit
 
 final
 class TabsViewController: DSTabsViewController<HeaderView> {

@@ -7,7 +7,6 @@
 
 import RxCocoa
 import RxSwift
-import UIKit
 
 final
 class CollectionViewControllerSmall: UICollectionViewController {
