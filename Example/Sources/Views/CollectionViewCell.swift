@@ -7,6 +7,7 @@
 
 import DStack
 
+final
 class CollectionViewCell: UICollectionViewCell {
 
     // MARK: Properties

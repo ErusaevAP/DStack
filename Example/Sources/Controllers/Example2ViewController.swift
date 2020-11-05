@@ -7,6 +7,7 @@
 
 import DStack
 
+final
 class Example2ViewController: UIViewController {
 
     // MARK: Properties

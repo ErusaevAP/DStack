@@ -7,6 +7,7 @@
 
 import DStack
 
+final
 class Example1ViewController: UITableViewController {
 
     // MARK: Life Cycle

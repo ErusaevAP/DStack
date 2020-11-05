@@ -9,6 +9,7 @@ import DStack
 
 // MARK: -
 
+final
 class MainViewController: UITabBarController {
 
     // MARK: Initialization

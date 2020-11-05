@@ -8,6 +8,7 @@
 import DStack
 import UIKit
 
+final
 class HeaderView: DSFlexibleHeader {
 
     // MARK: Properties

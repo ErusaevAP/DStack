@@ -7,6 +7,7 @@
 
 import UIKit
 
+final
 class WelcomeView: UIView {
 
     init() {

@@ -8,6 +8,7 @@
 import DStack
 import UIKit
 
+final
 class TabsWithHeaderViewController: DSTabsViewController<HeaderView> {
 
     // MARK: Initialization

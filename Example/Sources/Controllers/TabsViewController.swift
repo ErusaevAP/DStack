@@ -8,7 +8,7 @@
 import DStack
 import UIKit
 
-@objcMembers
+final
 class TabsViewController: DSTabsViewController<HeaderView> {
 
     // MARK: Properties

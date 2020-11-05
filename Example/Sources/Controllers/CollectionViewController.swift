@@ -9,6 +9,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+final
 class CollectionViewController: UICollectionViewController {
 
     private lazy
