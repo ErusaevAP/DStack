@@ -6,6 +6,7 @@
 //
 //
 
+final
 class DSContainerCell: UICollectionViewCell {
 
     static
