@@ -9,8 +9,6 @@
 import RxCocoa
 import RxSwift
 
-// swiftlint:disable type_body_length
-
 public
 protocol DSContentDeferredLoading: AnyObject {
 
